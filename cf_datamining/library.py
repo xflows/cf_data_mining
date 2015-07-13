@@ -266,6 +266,33 @@ def scikitAlgorithms_CSVtoNumpy(input_dict):
     output_dict['scikitDataset'] =  dataset
     return output_dict # returns a touple consiting of n_samples x n_features numpy array X and an array of length n_samples containing the targets y
 
+def scikitAlgorithms_split_dataset(input_dict):
+    inst = input_dict['data']
+    test_size = 1 - float( input_dict["p"] )
+
+    # train test split
+    from sklearn.cross_validation import train_test_split
+    data_train, data_test, target_train, target_test = train_test_split(
+        inst['data'],
+        inst['target'],
+        test_size=test_size, 
+        random_state=1)
+
+    from sklearn.datasets import base as ds
+    a_train = ds.Bunch(data=data_train,
+                 target=target_train,
+                 # last column is target value
+                 feature_names=inst.feature_names,
+                 DESCR=inst.DESCR)
+
+    a_test = ds.Bunch(data=data_test,
+                 target=target_test,
+                 # last column is target value
+                 feature_names=inst.feature_names,
+                 DESCR=inst.DESCR)
+
+    return {'train_data':a_train, 'test_data':a_test}
+
 
 # ===================================================
 # ===================================================
