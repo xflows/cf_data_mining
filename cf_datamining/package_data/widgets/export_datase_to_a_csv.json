@@ -1,0 +1,50 @@
+[
+  {
+    "fields": {
+      "default": "", 
+      "description": "", 
+      "multi": false, 
+      "name": "DataSet", 
+      "order": 1, 
+      "parameter": false, 
+      "parameter_type": null, 
+      "required": true, 
+      "short_name": "dts", 
+      "uid": "8782c523-ca3c-43f2-9c49-29ddb706a67e", 
+      "variable": "scikitDataset", 
+      "widget": "1bc483d6-4d6c-435f-9fc0-ad3716fe390b"
+    }, 
+    "model": "workflows.abstractinput"
+  }, 
+  {
+    "fields": {
+      "description": "", 
+      "name": "Out", 
+      "order": 1, 
+      "short_name": "csv", 
+      "uid": "0171b31d-4edd-43f8-abf1-e8a898fd4f8c", 
+      "variable": "CSVout", 
+      "widget": "1bc483d6-4d6c-435f-9fc0-ad3716fe390b"
+    }, 
+    "model": "workflows.abstractoutput"
+  }, 
+  {
+    "fields": {
+      "action": "scikitAlgorithms_scikitDatasetToCSV", 
+      "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0", 
+      "description": "Export dataset to a CSV file", 
+      "has_progress_bar": false, 
+      "interaction_view": "", 
+      "is_streaming": false, 
+      "name": "Export Dataset to a CSV File", 
+      "order": 1, 
+      "static_image": "SDT-to-CSV.png", 
+      "streaming_visualization_view": "", 
+      "treeview_image": "", 
+      "uid": "1bc483d6-4d6c-435f-9fc0-ad3716fe390b", 
+      "visualization_view": "", 
+      "windows_queue": false
+    }, 
+    "model": "workflows.abstractwidget"
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "fields": {
+      "description": "", 
+      "name": "Learner", 
+      "order": 1, 
+      "short_name": "lrn", 
+      "uid": "dc4f1e7a-aaf9-45a2-8d00-51ddb3948eb3", 
+      "variable": "out", 
+      "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e7d"
+    }, 
+    "model": "workflows.abstractoutput"
+  }, 
+  {
+    "fields": {
+      "action": "scikitAlgorithms_ElasticNet", 
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
+      "description": "L1+L2-regularized least squares linear model trained using Coordinate Descent", 
+      "has_progress_bar": false, 
+      "interaction_view": "", 
+      "is_streaming": false, 
+      "name": "Elastic Net Regression", 
+      "order": 1, 
+      "static_image": "scikit_NET.png", 
+      "streaming_visualization_view": "", 
+      "treeview_image": "", 
+      "uid": "0a5cb319-2063-4518-b0a0-d4686e7d0e7d", 
+      "visualization_view": "", 
+      "windows_queue": false
+    }, 
+    "model": "workflows.abstractwidget"
+  }
+]

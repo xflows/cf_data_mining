@@ -1,0 +1,66 @@
+[
+  {
+    "fields": {
+      "default": "", 
+      "description": "", 
+      "multi": false, 
+      "name": "ScikitDataset", 
+      "order": 2, 
+      "parameter": false, 
+      "parameter_type": null, 
+      "required": true, 
+      "short_name": "dts", 
+      "uid": "2cf65003-ff21-4c06-8783-0473fe66195d", 
+      "variable": "data", 
+      "widget": "fb514cfb-99f7-46cd-9e5c-9c0d8367da69"
+    }, 
+    "model": "workflows.abstractinput"
+  }, 
+  {
+    "fields": {
+      "default": "", 
+      "description": "", 
+      "multi": false, 
+      "name": "Classifier", 
+      "order": 1, 
+      "parameter": false, 
+      "parameter_type": null, 
+      "required": true, 
+      "short_name": "cls", 
+      "uid": "6b9238bf-af83-468d-83a7-dd59fc8e8bcd", 
+      "variable": "classifier", 
+      "widget": "fb514cfb-99f7-46cd-9e5c-9c0d8367da69"
+    }, 
+    "model": "workflows.abstractinput"
+  }, 
+  {
+    "fields": {
+      "description": "based on the provided classifier and data.", 
+      "name": "Classes", 
+      "order": 1, 
+      "short_name": "dts", 
+      "uid": "37abe044-2c32-45ea-a61d-914ca3337680", 
+      "variable": "classes", 
+      "widget": "fb514cfb-99f7-46cd-9e5c-9c0d8367da69"
+    }, 
+    "model": "workflows.abstractoutput"
+  }, 
+  {
+    "fields": {
+      "action": "scikitAlgorithms_applyClassifier", 
+      "category": "5888aa38-270f-423b-8d5f-e08f23c1a3b9", 
+      "description": "Applies a built classifier on a dataset", 
+      "has_progress_bar": false, 
+      "interaction_view": "", 
+      "is_streaming": false, 
+      "name": "Apply Classifier", 
+      "order": 1, 
+      "static_image": "scikit_applyClassifier.png", 
+      "streaming_visualization_view": "", 
+      "uid": "fb514cfb-99f7-46cd-9e5c-9c0d8367da69", 
+      "visualization_view": "", 
+      "windows_queue": false
+    }, 
+    "model": "workflows.abstractwidget"
+  }
+]

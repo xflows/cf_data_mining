@@ -1,0 +1,50 @@
+[
+  {
+    "fields": {
+      "default": "1.0", 
+      "description": "", 
+      "multi": false, 
+      "name": "alpha", 
+      "order": 1, 
+      "parameter": true, 
+      "parameter_type": "text", 
+      "required": false, 
+      "short_name": "par", 
+      "uid": "20ca688a-93c7-4079-99df-85ea07beb777", 
+      "variable": "authIn", 
+      "widget": "3f5f203d-638c-495c-8402-bf602a1168af"
+    }, 
+    "model": "workflows.abstractinput"
+  }, 
+  {
+    "fields": {
+      "description": "", 
+      "name": "Learner", 
+      "order": 1, 
+      "short_name": "lrn", 
+      "uid": "b346d0ee-85bc-45dc-a1b1-4a0a4eb49379", 
+      "variable": "out", 
+      "widget": "3f5f203d-638c-495c-8402-bf602a1168af"
+    }, 
+    "model": "workflows.abstractoutput"
+  }, 
+  {
+    "fields": {
+      "action": "scikitAlgorithms_LassoLARS", 
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
+      "description": "L1-regularized least squares linear model trained with Least Angle Regression", 
+      "has_progress_bar": false, 
+      "interaction_view": "", 
+      "is_streaming": false, 
+      "name": "Lasso LARS Regression", 
+      "order": 1, 
+      "static_image": "scikit_LARS.png", 
+      "streaming_visualization_view": "", 
+      "treeview_image": "", 
+      "uid": "3f5f203d-638c-495c-8402-bf602a1168af", 
+      "visualization_view": "", 
+      "windows_queue": false
+    }, 
+    "model": "workflows.abstractwidget"
+  }
+]

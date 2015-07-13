@@ -1,0 +1,50 @@
+[
+  {
+    "fields": {
+      "default": "", 
+      "description": "", 
+      "multi": false, 
+      "name": "Evaluation Results", 
+      "order": 1, 
+      "parameter": false, 
+      "parameter_type": null, 
+      "required": false, 
+      "short_name": "data", 
+      "uid": "1f40bcbb-e919-4078-8f11-fc2462bba84b", 
+      "variable": "data", 
+      "widget": "c527ea0f-336b-4334-8288-bce4e742e043"
+    }, 
+    "model": "workflows.abstractinput"
+  }, 
+  {
+    "fields": {
+      "description": "", 
+      "name": "Mean Squared Error", 
+      "order": 1, 
+      "short_name": "mse", 
+      "uid": "b5a01b55-2f97-4401-8183-6f774b7f18cc", 
+      "variable": "mse", 
+      "widget": "c527ea0f-336b-4334-8288-bce4e742e043"
+    }, 
+    "model": "workflows.abstractoutput"
+  }, 
+  {
+    "fields": {
+      "action": "scikitAlgorithms_MSE", 
+      "category": "5888aa38-270f-423b-8d5f-e08f23c1a3b9", 
+      "description": "One of the several alternative measures to be used to evaluate the success of numeric prediction.", 
+      "has_progress_bar": false, 
+      "interaction_view": "", 
+      "is_streaming": false, 
+      "name": "Mean Squared Error", 
+      "order": 1, 
+      "static_image": "MSE.png", 
+      "streaming_visualization_view": "", 
+      "treeview_image": "", 
+      "uid": "c527ea0f-336b-4334-8288-bce4e742e043", 
+      "visualization_view": "", 
+      "windows_queue": false
+    }, 
+    "model": "workflows.abstractwidget"
+  }
+]

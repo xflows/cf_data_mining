@@ -1,0 +1,66 @@
+[
+  {
+    "fields": {
+      "default": "", 
+      "description": "to be used by the provided learner to create a classifier.\r\n\r\nProvided by:\r\nArff to Weka Instances", 
+      "multi": false, 
+      "name": "Instances", 
+      "order": 2, 
+      "parameter": false, 
+      "parameter_type": null, 
+      "required": false, 
+      "short_name": "dts", 
+      "uid": "436e18dc-5bab-4a74-8cce-0b31b81b2bbd", 
+      "variable": "instances", 
+      "widget": "23203f72-4f76-4ac9-a3d0-5608fe2cd04c"
+    }, 
+    "model": "workflows.abstractinput"
+  }, 
+  {
+    "fields": {
+      "default": "", 
+      "description": "used to build the classifier.\r\n\r\nProvided by:\r\na Weka Classification widget", 
+      "multi": false, 
+      "name": "Learner", 
+      "order": 1, 
+      "parameter": false, 
+      "parameter_type": null, 
+      "required": false, 
+      "short_name": "lea", 
+      "uid": "97bdb348-947c-4564-88b3-07f0f6134307", 
+      "variable": "learner", 
+      "widget": "23203f72-4f76-4ac9-a3d0-5608fe2cd04c"
+    }, 
+    "model": "workflows.abstractinput"
+  }, 
+  {
+    "fields": {
+      "description": "based on the provided data and learner.\r\n\r\nUsed by:\r\nWeka Apply Classifier", 
+      "name": "Classifier", 
+      "order": 1, 
+      "short_name": "cls", 
+      "uid": "21f0bf7d-7415-4c4e-b68f-053155c015c2", 
+      "variable": "classifier", 
+      "widget": "23203f72-4f76-4ac9-a3d0-5608fe2cd04c"
+    }, 
+    "model": "workflows.abstractoutput"
+  }, 
+  {
+    "fields": {
+      "action": "scikitAlgorithms_buildClassifier", 
+      "category": "5888aa38-270f-423b-8d5f-e08f23c1a3b9", 
+      "description": "Builds a classifier", 
+      "has_progress_bar": false, 
+      "interaction_view": "", 
+      "is_streaming": false, 
+      "name": "Build Classifier", 
+      "order": 1, 
+      "static_image": "scikit_buildClassifier.png", 
+      "streaming_visualization_view": "", 
+      "uid": "23203f72-4f76-4ac9-a3d0-5608fe2cd04c", 
+      "visualization_view": "", 
+      "windows_queue": false
+    }, 
+    "model": "workflows.abstractwidget"
+  }
+]

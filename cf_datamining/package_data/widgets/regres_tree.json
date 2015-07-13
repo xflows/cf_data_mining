@@ -1,0 +1,67 @@
+[
+  {
+    "fields": {
+      "default": "auto", 
+      "description": "", 
+      "multi": false, 
+      "name": "max_feature", 
+      "order": 1, 
+      "parameter": true, 
+      "parameter_type": "text", 
+      "required": false, 
+      "short_name": "par", 
+      "uid": "61d7acc2-72c8-4943-a602-fcbabea6320f", 
+      "variable": "featureIn", 
+      "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d"
+    }, 
+    "model": "workflows.abstractinput"
+  }, 
+  {
+    "fields": {
+      "default": "100", 
+      "description": "", 
+      "multi": false, 
+      "name": "max_depth", 
+      "order": 1, 
+      "parameter": true, 
+      "parameter_type": "text", 
+      "required": false, 
+      "short_name": "par", 
+      "uid": "d3fe38b1-f3b2-4364-a30e-dac5a271bdfa", 
+      "variable": "depthIn", 
+      "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d"
+    }, 
+    "model": "workflows.abstractinput"
+  }, 
+  {
+    "fields": {
+      "description": "", 
+      "name": "Learner", 
+      "order": 1, 
+      "short_name": "lrn", 
+      "uid": "dc4f1e7a-aaf9-45a2-8d00-51ddb3948e23", 
+      "variable": "treeOut", 
+      "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d"
+    }, 
+    "model": "workflows.abstractoutput"
+  }, 
+  {
+    "fields": {
+      "action": "scikitAlgorithms_DecisionTreeRegressor", 
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
+      "description": "A decision tree regressor", 
+      "has_progress_bar": false, 
+      "interaction_view": "", 
+      "is_streaming": false, 
+      "name": "Regression Tree", 
+      "order": 1, 
+      "static_image": "scikit_Tree-icon.png", 
+      "streaming_visualization_view": "", 
+      "treeview_image": "", 
+      "uid": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d", 
+      "visualization_view": "", 
+      "windows_queue": false
+    }, 
+    "model": "workflows.abstractwidget"
+  }
+]
