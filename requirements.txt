@@ -1,0 +1,2 @@
+scikit-learn==0.14.1
+pydot==1.0.28
