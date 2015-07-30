@@ -1,0 +1,79 @@
+[
+  {
+    "fields": {
+      "default": "",
+      "description": "data instances",
+      "multi": false,
+      "name": "Instances",
+      "order": 2,
+      "parameter": false,
+      "parameter_type": null,
+      "required": false,
+      "short_name": "dts",
+      "uid": "436e18dc-5bab-4a74-8cce-0b31b81b2432",
+      "variable": "instances",
+      "widget": "9996e844-67e4-49a6-ac1f-8b64cd72ac3e"
+    },
+    "model": "workflows.abstractinput"
+  },
+  {
+    "fields": {
+      "default": "3",
+      "description": "",
+      "multi": false,
+      "name": "k",
+      "order": 1,
+      "parameter": true,
+      "parameter_type": "text",
+      "required": false,
+      "short_name": "k",
+      "uid": "8e52a690-4a80-4d1b-9527-8125815785c1",
+      "variable": "k",
+      "widget": "9996e844-67e4-49a6-ac1f-8b64cd72ac3e"
+    },
+    "model": "workflows.abstractinput"
+  },
+  {
+    "fields": {
+      "description": "Cluster centers for each of the k clusters.",
+      "name": "Cluster centers",
+      "order": 1,
+      "short_name": "clu",
+      "uid": "62d4cc9a-d6f1-4a84-8f49-0685676e2c13",
+      "variable": "clusterCenters",
+      "widget": "9996e844-67e4-49a6-ac1f-8b64cd72ac3e"
+    },
+    "model": "workflows.abstractoutput"
+  },
+  {
+    "fields": {
+      "description": "Data with cluster identifiers.",
+      "name": "Clustered data",
+      "order": 1,
+      "short_name": "clu",
+      "uid": "62d4cc9a-d6f1-4a84-8f49-0685676e5c12",
+      "variable": "clusteredData",
+      "widget": "9996e844-67e4-49a6-ac1f-8b64cd72ac3e"
+    },
+    "model": "workflows.abstractoutput"
+  },
+  {
+    "fields": {
+      "action": "scikitAlgorithms_kMeans",
+      "category": "ef06ed94-c57a-4ea4-8fa5-1222920c95a0",
+      "description": "k-Means",
+      "has_progress_bar": false,
+      "interaction_view": "",
+      "is_streaming": false,
+      "name": "k-Means Clustering",
+      "order": 1,
+      "static_image": "scikit_network.png",
+      "streaming_visualization_view": "",
+      "treeview_image": "",
+      "uid": "9996e844-67e4-49a6-ac1f-8b64cd72ac5e",
+      "visualization_view": "",
+      "windows_queue": false
+    },
+    "model": "workflows.abstractwidget"
+  }
+]

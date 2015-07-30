@@ -24,13 +24,13 @@
       "has_progress_bar": false, 
       "interaction_view": "", 
       "is_streaming": false, 
-      "name": "Display Decision Tree NOT WORKING", 
+      "name": "Display Decision Tree",
       "order": 1, 
       "static_image": "TreeVisualization.png", 
       "streaming_visualization_view": "", 
       "treeview_image": "", 
       "uid": "0b152c3b-7bc0-4e93-b4f2-92a4c059107d", 
-      "visualization_view": "", 
+      "visualization_view": "scikitAlgorithms_displayDecisTree",
       "windows_queue": false
     }, 
     "model": "workflows.abstractwidget"

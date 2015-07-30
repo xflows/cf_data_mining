@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 
+import numpy as np
+
+
 #
 #   CLASSIFICATION
 #
@@ -142,6 +145,53 @@ def scikitAlgorithms_ElasticNet(input_dict):
     return output_dict
 
 #
+#   UNSUPERVISED
+#
+
+
+def scikitAlgorithms_kMeans(input_dict):
+    """
+    k-Means clustering
+    """
+
+    data = input_dict['instances']
+    X = data['data']      # dsNum['dtsOut']['data']
+    k = int( input_dict['k'] )
+
+    from sklearn.cluster import KMeans
+    k_means = KMeans(init='k-means++', n_clusters=k, n_init=10)
+    # t0 = time.time()
+    k_means.fit(X)
+    # t_batch = time.time() - t0
+    k_means_labels = k_means.labels_
+    k_means_cluster_centers = k_means.cluster_centers_
+    # k_means_labels_unique = np.unique(k_means_labels)
+
+    data["cluster_id"] = k_means_labels
+
+    return {'clusterCenters':k_means_cluster_centers, 'clusteredData':data}
+
+
+def scikitAlgorithms_AglomerativeClustering(input_dict):
+    """  TBD  """
+
+    data = input_dict['instances']
+    X = data['data']      # dsNum['dtsOut']['data']
+    n_clusters = int( input_dict['k'] )
+
+    from sklearn.cluster import AgglomerativeClustering
+
+    metric = "euclidean"    #["cosine", "euclidean", "cityblock"]
+    model = AgglomerativeClustering(n_clusters=n_clusters, linkage="average", affinity=metric)
+    model.fit(X)
+    agl_clust_labels = model.labels_
+
+    data["cluster_id"] = agl_clust_labels
+
+    return {'clusteredData':data}
+
+
+#
 #   UTILITIES and EVALUATION
 #
 
@@ -210,14 +260,12 @@ def scikitAlgorithms_displayDecisionTree(input_dict):
     import StringIO, pydot 
     from os import system
     dot_data = StringIO.StringIO() 
-    dotfile = open("decisionTreeJ48-scikit.dot", 'w')    
-    if dotfile != None:
-        print( type(dotfile) )
-        dotfile = tree.export_graphviz(input_dict['classifier'], out_file=dotfile)         
-        # dotfile.close()
-        system("dot -Tpng decisionTreeJ48-scikit.dot -o decisionTreeJ48-scikit.png") #CORRECT SO THAT IMAGE IS GOING TO BE SAVED IN THE CORRECT DIRECTORY
-    else:
-        ErrorOpeningFile
+
+    tree.export_graphviz(input_dict['classifier'], out_file="decisionTreeJ48-scikit.dot") #dotfile)
+    # dotfile.close()
+    system("dot -Tpng decisionTreeJ48-scikit.dot -o workflows/static/decisionTree-scikit.png") #CORRECT SO THAT IMAGE IS GOING TO BE SAVED IN THE CORRECT DIRECTORY
+    return {}
+
 
 def scikitAlgorithms_UCIDataset(input_dict):
     """ Loads a UCI dataset """
@@ -267,6 +315,8 @@ def scikitAlgorithms_CSVtoNumpy(input_dict):
     return output_dict # returns a touple consiting of n_samples x n_features numpy array X and an array of length n_samples containing the targets y
 
 def scikitAlgorithms_split_dataset(input_dict):
+    """ Randomly splits the dataset into a train and test dataset."""
+
     inst = input_dict['data']
     test_size = 1 - float( input_dict["p"] )
 
@@ -281,18 +331,66 @@ def scikitAlgorithms_split_dataset(input_dict):
     from sklearn.datasets import base as ds
     a_train = ds.Bunch(data=data_train,
                  target=target_train,
-                 # last column is target value
                  feature_names=inst.feature_names,
                  DESCR=inst.DESCR)
 
     a_test = ds.Bunch(data=data_test,
                  target=target_test,
-                 # last column is target value
                  feature_names=inst.feature_names,
                  DESCR=inst.DESCR)
 
     return {'train_data':a_train, 'test_data':a_test}
 
+
+def scikitAlgorithms_select_data(input_dict):
+    return input_dict
+
+
+def scikitAlgorithms_select_data_post(postdata, input_dict, output_dict):
+
+    # Regarding the dataset structure in SciKit:
+    # see : http://scikit-learn-laboratory.readthedocs.org/en/latest/api/data.html
+    # see : http://stackoverflow.com/questions/24896178/sklearn-have-an-estimator-that-filters-samples
+    import json
+
+    data = input_dict['data']
+    data_compl  = np.hstack( [np.matrix(data.data), np.transpose( np.matrix(data.target)) ])
+    data_compl  = np.array( data_compl )
+
+    conditions = json.loads(str(postdata['conditions'][0]))
+
+    print postdata['conditions'][0]
+
+    for cond in conditions['conditions']:
+        if cond['condition'][0]['operator'] in ["is defined", "sis defined"]:
+            print "***** "
+        else:
+            for or_cond in cond['condition']:
+                #arr = data.feature_names
+                attrInd = list(data.feature_names).index( str(or_cond['attr']) )
+
+                op = str(or_cond['operator'])
+                val= list(or_cond['values'])
+                val= [float(el) for el in val]
+                if op=='>=':
+                    # my_inds = np.where( data_mat[:,attrInd] >= val[0] )
+                    data_compl = data_compl[ data_compl[:,attrInd] >= val[0], :  ]
+                if op=='<=':
+                    data_compl = data_compl[ data_compl[:,attrInd] <= val[0], :  ]
+                if op=='<':
+                    data_compl = data_compl[ data_compl[:,attrInd] < val[0], :  ]
+                if op=='>':
+                    data_compl = data_compl[ data_compl[:,attrInd] > val[0], :  ]
+                if op=='=':
+                    data_compl = data_compl[ data_compl[:,attrInd] == val[0], :  ]
+
+
+    output_dict['data']['data'] = data_compl[:, 0:-1]
+    output_dict['data']['target'] =  data_compl[ :, -1 ]
+
+    return output_dict
+
+    #return {'data': data, 'dummy':5}
 
 # ===================================================
 # ===================================================
