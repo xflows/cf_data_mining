@@ -11,7 +11,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "20ca688a-93c7-4079-99df-85ea07beb777", 
-      "variable": "authIn", 
+      "variable": "alpha",
       "widget": "3f5f203d-638c-495c-8402-bf602a1168af"
     }, 
     "model": "workflows.abstractinput"

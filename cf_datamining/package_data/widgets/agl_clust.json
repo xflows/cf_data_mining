@@ -49,7 +49,7 @@
     "fields": {
       "action": "scikitAlgorithms_AglomerativeClustering",
       "category": "ef06ed94-c57a-4ea4-8fa5-1222920c95a0",
-      "description": "Aglomerative Clustering",
+      "description": "Aglomerative Clustering: hierarchical clustering using a bottom up approach: each observation starts in its own cluster, and clusters are successively merged together",
       "has_progress_bar": false,
       "interaction_view": "",
       "is_streaming": false,

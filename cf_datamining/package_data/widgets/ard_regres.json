@@ -2,7 +2,7 @@
   {
     "fields": {
       "default": "300", 
-      "description": "", 
+      "description": "Maximum number of iterations",
       "multi": false, 
       "name": "n_iter", 
       "order": 1, 
@@ -11,7 +11,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "3d658af4-f2c7-4e6c-b8a8-44be1e73a6bf", 
-      "variable": "iterIn", 
+      "variable": "n_iter",
       "widget": "e733abdb-9109-4f0e-88e3-23beecb3d330"
     }, 
     "model": "workflows.abstractinput"

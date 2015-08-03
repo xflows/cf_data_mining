@@ -19,7 +19,7 @@
       "has_progress_bar": false, 
       "interaction_view": "", 
       "is_streaming": false, 
-      "name": "Support Vector Regression", 
+      "name": "Epsilon-Support Vector Regression, using the RBF kernel.",
       "order": 1, 
       "static_image": "scikit_svm.png", 
       "streaming_visualization_view": "", 

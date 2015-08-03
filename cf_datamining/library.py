@@ -3,7 +3,6 @@
 
 import numpy as np
 
-
 #
 #   CLASSIFICATION
 #
@@ -96,15 +95,17 @@ def scikitAlgorithms_DecisionTreeRegressor(input_dict):
 
 
 def scikitAlgorithms_LassoLARS(input_dict):
-    """ TBD """
+    """ L1-regularized least squares linear model trained with Least Angle Regression. alpha=constant that multiplies the penalty term, default 1.0 """
+
     from sklearn.linear_model import LassoLars
-    clf = LassoLars(alpha=float(input_dict["authIn"]))
+    clf = LassoLars(alpha=float(input_dict["alpha"]))
     output_dict={}
     output_dict['out'] = clf
     return output_dict
 
 def scikitAlgorithms_SGDRegressor(input_dict):
-    """ TBD """
+    """ Linear model fitted by minimizing a regularized empirical loss with Stochastic Gradient Descent. """
+
     from sklearn.linear_model import SGDRegressor
     clf = SGDRegressor()
     output_dict={}
@@ -112,15 +113,17 @@ def scikitAlgorithms_SGDRegressor(input_dict):
     return output_dict
 
 def scikitAlgorithms_ARDRegression(input_dict):
-    """ TBD """
+    """ Bayesian Automated Relevance Determination regression. n_iter=maximum number of iterations, default 300 """
+
     from sklearn.linear_model import ARDRegression
-    clf = ARDRegression(n_iter=int(input_dict["iterIn"]))
+    clf = ARDRegression(n_iter=int(input_dict["n_iter"]))
     output_dict={}
     output_dict['out'] = clf
     return output_dict
 
 def scikitAlgorithms_SVR(input_dict):
-    """ TBD """
+    """ Epsilon-Support Vector Regression, using the RBF kernel. """
+
     from sklearn.svm import SVR 
     clf = SVR()
     output_dict={}
@@ -137,7 +140,8 @@ def scikitAlgorithms_Ridge(input_dict):
     return output_dict
 
 def scikitAlgorithms_ElasticNet(input_dict):
-    """ TBD """
+    """ L1+L2-regularized least squares linear model trained using Coordinate Descent. """
+
     from sklearn.linear_model import ElasticNet
     clf = ElasticNet()
     output_dict={}
@@ -173,7 +177,7 @@ def scikitAlgorithms_kMeans(input_dict):
 
 
 def scikitAlgorithms_AglomerativeClustering(input_dict):
-    """  TBD  """
+    """  Hierarchical Agglomerative Clustering, using the Ward linkage and euclidean metric. The parameter k (num.clusters) needs to be set, default value 3. """
 
     data = input_dict['instances']
     X = data['data']      # dsNum['dtsOut']['data']
@@ -279,25 +283,25 @@ def scikitAlgorithms_UCIDataset(input_dict):
 
 
 def scikitAlgorithms_scikitDatasetToCSV(input_dict):
-    """ TBD """
+    """ Exports a SciKit dataset to a CSV file """
+
     output_dict={}
     dataset= input_dict['scikitDataset']
-    n_sample = dataset[0]
-    n_feature = dataset[1]
+
     import numpy
     csv=[]
     count=0
-    for sample in n_sample:
-        csv.append(numpy.append(sample,n_feature[count])) #join n_sample and n_feature array
-        count+=1
-    #numpy.savetxt("foo.csv", csv, delimiter=",")
+    for i,sample in enumerate(dataset.data):
+        csv.append(numpy.append(sample,dataset.target[i])) #join n_sample and n_feature array
+
+    numpy.savetxt("foo.csv", csv, fmt='%.6f', delimiter=",")
     output_dict['CSVout'] = csv
     return output_dict
 
 
 
 def scikitAlgorithms_CSVtoNumpy(input_dict):
-    """ TBD """
+    """ Imports CSV file, and creates a Scikit dataset. """
     # the targer value must be in the last colum of the CSV file
     output_dict={}
     # this code converts data from the csv file into scikit learn dataset and returns it as a tuple
@@ -315,7 +319,7 @@ def scikitAlgorithms_CSVtoNumpy(input_dict):
     return output_dict # returns a touple consiting of n_samples x n_features numpy array X and an array of length n_samples containing the targets y
 
 def scikitAlgorithms_split_dataset(input_dict):
-    """ Randomly splits the dataset into a train and test dataset."""
+    """ Randomly splits a given dataset into a train and test dataset."""
 
     inst = input_dict['data']
     test_size = 1 - float( input_dict["p"] )
@@ -345,12 +349,7 @@ def scikitAlgorithms_split_dataset(input_dict):
 def scikitAlgorithms_select_data(input_dict):
     return input_dict
 
-
 def scikitAlgorithms_select_data_post(postdata, input_dict, output_dict):
-
-    # Regarding the dataset structure in SciKit:
-    # see : http://scikit-learn-laboratory.readthedocs.org/en/latest/api/data.html
-    # see : http://stackoverflow.com/questions/24896178/sklearn-have-an-estimator-that-filters-samples
     import json
 
     data = input_dict['data']
@@ -393,35 +392,6 @@ def scikitAlgorithms_select_data_post(postdata, input_dict, output_dict):
     #return {'data': data, 'dummy':5}
 
 # ===================================================
-# ===================================================
 
 def scikitAlgorithms_displayDS(input_dict):
     return {}
-
-
-
-def helperDisplayDS(data):
-    """ Temporarily placed here """
-
-    #get data to fill table
-    info = data['data']
-    print type(info)
-
-    n_sample = info["data"]
-    n_feature = info["target"]
-
-    # join data in the right format
-    import numpy
-    csv=[]
-    count=0
-    for sample in n_sample:
-        csv.append(numpy.append(sample,n_feature[count])) #join n_sample and n_feature array
-        count+=1
-
-    attrs = ["attribute" for i in range(len(n_sample[0]))] #name of attributes
-    attrs = info.feature_names
-    class_var = 'category'
-    metas = '' 
-    data_new = csv #fill table with data
-    
-    return {'attrs':attrs, 'metas':metas, 'data_new':data_new, 'class_var':class_var}
