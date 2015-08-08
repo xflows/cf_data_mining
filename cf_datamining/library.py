@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- 
 
 import numpy as np
-
+import classification as c, regression as r, unsupervised as u
 #
 #   CLASSIFICATION
 #
@@ -12,28 +12,34 @@ def scikitAlgorithms_naiveBayes(input_dict):
     from sklearn.naive_bayes import GaussianNB 
     y_pred = GaussianNB()
     output_dict={}
-    output_dict['bayesout'] = y_pred
+    output_dict['bayesout'] = c.naiveBayes()
     return output_dict
 
 def scikitAlgorithms_SVC(input_dict):
-    """
-    Support Vector Machines with kernels based on libsvm
-    """
-    from sklearn.svm import SVC
-    clf = SVC(C=float(input_dict["penaltyIn"]), kernel=str(input_dict["kernelIn"]), degree=int(input_dict["degIn"]))
+    """Support Vector Machines with kernels based on libsvm"""
     output_dict={}
-    output_dict['SVCout'] = clf
+    output_dict['SVCout'] = c.SVC( input_dict["penaltyIn"], input_dict["kernelIn"], input_dict["degIn"])
     return output_dict
 
 def scikitAlgorithms_kNearestNeighbors(input_dict):
-    """ 
-    k-Nearest Neighbors classifier based on the ball tree datastructure for low dimensional data and brute force search for high dimensional data
-    """
-    from sklearn.neighbors import KNeighborsClassifier
-    knn = KNeighborsClassifier(n_neighbors=int(input_dict['numNeib']), weights=input_dict['wgIn'], algorithm=input_dict['algIn'])
+    """k-Nearest Neighbors classifier based on the ball tree datastructure for low dimensional data and brute force search for high dimensional data"""
+
+    knn = c.kNearestNeighbors(input_dict['numNeib'], input_dict['wgIn'], input_dict['algIn'] )
     output_dict={}
     output_dict['KNNout'] = knn
     return output_dict
+
+def scikitAlgorithms_logisticRegression(input_dict):
+    '''Logistic regression classifier.'''
+    output_dict={}
+    output_dict['LRout'] = c.logisticRegression(input_dict["penIn"], input_dict["cIn"])
+    return output_dict
+
+
+
+
+
+
 
 def scikitAlgorithms_linearSVC(input_dict):
     """ Support Vector Regression, without kernels, based on liblinear """
@@ -51,16 +57,6 @@ def scikitAlgorithms_kNearestNeighbors(input_dict):
     output_dict['KNNout'] = knn
     return output_dict
 
-def scikitAlgorithms_logisticRegression(input_dict):
-    '''Logistic regression classifier.
-    The parameters are:
-    penalty : {string} Used to specify the norm used in the penalization. ‘l1’ or ‘l2’.
-    C : {float} Inverse of regularization strength; must be a positive float. Like in support vector machines, smaller values specify stronger regularization.'''
-    from sklearn.linear_model import LogisticRegression
-    clf = LogisticRegression(penalty=str(input_dict["penIn"]), C=float(input_dict["cIn"]))
-    output_dict={}
-    output_dict['LRout'] = clf
-    return output_dict
 
 def scikitAlgorithms_J48(input_dict):
     """ Creates a J48 decision tree classifier """
@@ -79,15 +75,9 @@ def scikitAlgorithms_J48(input_dict):
 #
 
 def scikitAlgorithms_DecisionTreeRegressor(input_dict):
-    from sklearn import tree
-    #parse input and determin its type
-    try:
-        featureValue= float(input_dict["featureIn"]) if '.' in input_dict["featureIn"] else int(input_dict["featureIn"]) #return int or float
-    except ValueError:
-        featureValue= input_dict["featureIn"] #return string
-    clf = tree.DecisionTreeRegressor(max_features=featureValue, max_depth=int(input_dict["depthIn"]))
+    clf = r.decisionTreeRegressor(input_dict["featureIn"], input_dict["depthIn"])
 
-    print "scikitAlgorithms_DecisionTreeRegressor :: " + str(clf)
+    # print "scikitAlgorithms_DecisionTreeRegressor :: " + str(clf)
 
     output_dict={}
     output_dict['treeOut'] = clf
@@ -151,48 +141,17 @@ def scikitAlgorithms_ElasticNet(input_dict):
 #
 #   UNSUPERVISED
 #
-
-
 def scikitAlgorithms_kMeans(input_dict):
-    """
-    k-Means clustering
-    """
+    """k-Means clustering"""
 
-    data = input_dict['instances']
-    X = data['data']      # dsNum['dtsOut']['data']
-    k = int( input_dict['k'] )
-
-    from sklearn.cluster import KMeans
-    k_means = KMeans(init='k-means++', n_clusters=k, n_init=10)
-    # t0 = time.time()
-    k_means.fit(X)
-    # t_batch = time.time() - t0
-    k_means_labels = k_means.labels_
-    k_means_cluster_centers = k_means.cluster_centers_
-    # k_means_labels_unique = np.unique(k_means_labels)
-
-    data["cluster_id"] = k_means_labels
-
-    return {'clusterCenters':k_means_cluster_centers, 'clusteredData':data}
+    kMeansClusterCenters, clusteredData =  u.kMeans(input_dict['instances'], input_dict['k'])
+    return {'clusterCenters':kMeansClusterCenters, 'clusteredData':clusteredData}
 
 
 def scikitAlgorithms_AglomerativeClustering(input_dict):
     """  Hierarchical Agglomerative Clustering, using the Ward linkage and euclidean metric. The parameter k (num.clusters) needs to be set, default value 3. """
-
-    data = input_dict['instances']
-    X = data['data']      # dsNum['dtsOut']['data']
-    n_clusters = int( input_dict['k'] )
-
-    from sklearn.cluster import AgglomerativeClustering
-
-    metric = "euclidean"    #["cosine", "euclidean", "cityblock"]
-    model = AgglomerativeClustering(n_clusters=n_clusters, linkage="average", affinity=metric)
-    model.fit(X)
-    agl_clust_labels = model.labels_
-
-    data["cluster_id"] = agl_clust_labels
-
-    return {'clusteredData':data}
+    clusteredData = u.aglomerativeClustering(input_dict['instances'], input_dict['k'])
+    return {'clusteredData':clusteredData}
 
 
 #
@@ -395,3 +354,5 @@ def scikitAlgorithms_select_data_post(postdata, input_dict, output_dict):
 
 def scikitAlgorithms_displayDS(input_dict):
     return {}
+
+
