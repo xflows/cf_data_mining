@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 
+__author__ = 'darkoa'
+
 import numpy as np
 import classification as c, regression as r, unsupervised as u
-#
+
+
+# -------------------
 #   CLASSIFICATION
-#
+# -------------------
 
 def scikitAlgorithms_naiveBayes(input_dict):
     """ Naive Bayes algorithm for classification """
@@ -35,44 +39,42 @@ def scikitAlgorithms_logisticRegression(input_dict):
     output_dict['LRout'] = c.logisticRegression(input_dict["penIn"], input_dict["cIn"])
     return output_dict
 
-
-
-
-
-
-
 def scikitAlgorithms_linearSVC(input_dict):
     """ Support Vector Regression, without kernels, based on liblinear """
-    from sklearn.svm import LinearSVC
-    clf = LinearSVC(C=float(input_dict["penaltyIn"]),loss=input_dict["lossIn"],penalty=input_dict["normIn"], multi_class=input_dict["classIn"])
+
+    clf = c.linearSVC(cIn=float(input_dict["cIn"]),lossIn=input_dict["lossIn"],penaltyIn=input_dict["penaltyIn"], multiClassIn=input_dict["multiClassIn"])
     output_dict={}
     output_dict['SVCout'] = clf
     return output_dict
 
 def scikitAlgorithms_kNearestNeighbors(input_dict):
-    """ TBD """
+    """ k-Nearest Neighbors classifier based on the ball tree datastructure for low dimensional data and brute force search for high dimensional data """
     from sklearn.neighbors import KNeighborsClassifier
     knn = KNeighborsClassifier(n_neighbors=int(input_dict['numNeib']), weights=input_dict['wgIn'], algorithm=input_dict['algIn'])
     output_dict={}
     output_dict['KNNout'] = knn
     return output_dict
 
-
 def scikitAlgorithms_J48(input_dict):
     """ Creates a J48 decision tree classifier """
-    from sklearn import tree
-    #parse input and determin its type
+
+    #parse input and determine its type
     try:
-        featureValue= float(input_dict["featureIn"]) if '.' in input_dict["featureIn"] else int(input_dict["featureIn"]) #return int or float
+        maxFeatures= float(input_dict["maxFeaturesIn"]) if '.' in input_dict["maxFeaturesIn"] else int(input_dict["maxFeaturesIn"]) #return int or float
     except ValueError:
-        featureValue= input_dict["featureIn"] #return string
-    clf = tree.DecisionTreeClassifier(max_features=featureValue, max_depth=int(input_dict["depthIn"]))
+        maxFeatures= input_dict["maxFeaturesIn"] #return string
+
+    clf = c.J48(maxFeaturesIn=maxFeatures, depthIn=int(input_dict["depthIn"]))
+
     output_dict={}
     output_dict['treeOut'] = clf
     return output_dict
-#
+
+
+
+# -------------------
 #   REGRESSION
-#
+# -------------------
 
 def scikitAlgorithms_DecisionTreeRegressor(input_dict):
     clf = r.decisionTreeRegressor(input_dict["featureIn"], input_dict["depthIn"])

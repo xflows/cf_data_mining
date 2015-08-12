@@ -11,7 +11,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "2404bc82-b32b-4787-acd4-82ceef160c22", 
-      "variable": "penaltyIn", 
+      "variable": "cIn", 
       "widget": "bab37f12-8d69-4823-a86b-13af7e1cb00d"
     }, 
     "model": "workflows.abstractinput"
@@ -19,9 +19,9 @@
   {
     "fields": {
       "default": "l2", 
-      "description": "", 
+      "description": "Specifies the loss function.", 
       "multi": false, 
-      "name": "Loss parameter(loss)", 
+      "name": "Loss", 
       "order": 2, 
       "parameter": true, 
       "parameter_type": "select", 
@@ -45,7 +45,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "b8b407d1-c11e-4829-a851-f1cd9ebe1409", 
-      "variable": "normIn", 
+      "variable": "penaltyIn", 
       "widget": "bab37f12-8d69-4823-a86b-13af7e1cb00d"
     }, 
     "model": "workflows.abstractinput"
@@ -62,7 +62,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "da13b053-3d1b-48ad-a046-5683143f1391", 
-      "variable": "classIn", 
+      "variable": "multiClassIn", 
       "widget": "bab37f12-8d69-4823-a86b-13af7e1cb00d"
     }, 
     "model": "workflows.abstractinput"

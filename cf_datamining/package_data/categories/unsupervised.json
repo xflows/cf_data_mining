@@ -1,0 +1,9 @@
+{
+  "model": "workflows.category", 
+  "fields": {
+    "name": "Unsupervised", 
+    "parent": "3c5ac714-84ca-4c93-befb-ce0c16148rgr", 
+    "order": 1, 
+    "uid": "ef06ed94-c57a-4ea4-8fa5-1222920c95a0"
+  }
+}
