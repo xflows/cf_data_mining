@@ -77,9 +77,13 @@ def scikitAlgorithms_J48(input_dict):
 # -------------------
 
 def scikitAlgorithms_DecisionTreeRegressor(input_dict):
-    clf = r.decisionTreeRegressor(input_dict["featureIn"], input_dict["depthIn"])
+    #parse input and determine its type
+    try:
+        maxFeatures= float(input_dict["maxFeaturesIn"]) if '.' in input_dict["maxFeaturesIn"] else int(input_dict["maxFeaturesIn"]) #return int or float
+    except ValueError:
+        maxFeatures= input_dict["maxFeaturesIn"] #return string
 
-    # print "scikitAlgorithms_DecisionTreeRegressor :: " + str(clf)
+    clf = r.decisionTreeRegressor(maxFeatures, int( input_dict["depthIn"] ))
 
     output_dict={}
     output_dict['treeOut'] = clf
@@ -89,8 +93,8 @@ def scikitAlgorithms_DecisionTreeRegressor(input_dict):
 def scikitAlgorithms_LassoLARS(input_dict):
     """ L1-regularized least squares linear model trained with Least Angle Regression. alpha=constant that multiplies the penalty term, default 1.0 """
 
-    from sklearn.linear_model import LassoLars
-    clf = LassoLars(alpha=float(input_dict["alpha"]))
+    clf = r.lassoLARS(alphaIn=float(input_dict["alpha"]))
+
     output_dict={}
     output_dict['out'] = clf
     return output_dict
@@ -98,8 +102,7 @@ def scikitAlgorithms_LassoLARS(input_dict):
 def scikitAlgorithms_SGDRegressor(input_dict):
     """ Linear model fitted by minimizing a regularized empirical loss with Stochastic Gradient Descent. """
 
-    from sklearn.linear_model import SGDRegressor
-    clf = SGDRegressor()
+    clf = r.sgdRegressor()
     output_dict={}
     output_dict['out'] = clf
     return output_dict
@@ -107,26 +110,14 @@ def scikitAlgorithms_SGDRegressor(input_dict):
 def scikitAlgorithms_ARDRegression(input_dict):
     """ Bayesian Automated Relevance Determination regression. n_iter=maximum number of iterations, default 300 """
 
-    from sklearn.linear_model import ARDRegression
-    clf = ARDRegression(n_iter=int(input_dict["n_iter"]))
+    clf = r.ardRegression(int(input_dict["n_iter"]))
     output_dict={}
     output_dict['out'] = clf
     return output_dict
-
-def scikitAlgorithms_SVR(input_dict):
-    """ Epsilon-Support Vector Regression, using the RBF kernel. """
-
-    from sklearn.svm import SVR 
-    clf = SVR()
-    output_dict={}
-    output_dict['out'] = clf
-    return output_dict
-
 
 def scikitAlgorithms_Ridge(input_dict):
     """ L2-regularized least squares linear model """
-    from sklearn.linear_model import Ridge
-    clf = Ridge()
+    clf = r.ridge()
     output_dict={}
     output_dict['out'] = clf
     return output_dict
@@ -134,15 +125,25 @@ def scikitAlgorithms_Ridge(input_dict):
 def scikitAlgorithms_ElasticNet(input_dict):
     """ L1+L2-regularized least squares linear model trained using Coordinate Descent. """
 
-    from sklearn.linear_model import ElasticNet
-    clf = ElasticNet()
+    clf = r.elasticNet()
     output_dict={}
     output_dict['out'] = clf
     return output_dict
 
-#
+def scikitAlgorithms_SVR(input_dict):
+    """ Epsilon-Support Vector Regression, using the RBF kernel. """
+
+    clf = r.svr()
+    output_dict={}
+    output_dict['out'] = clf
+    return output_dict
+
+
+
+# --------------------
 #   UNSUPERVISED
-#
+# --------------------
+
 def scikitAlgorithms_kMeans(input_dict):
     """k-Means clustering"""
 
@@ -156,9 +157,9 @@ def scikitAlgorithms_AglomerativeClustering(input_dict):
     return {'clusteredData':clusteredData}
 
 
-#
+# ----------------------------
 #   UTILITIES and EVALUATION
-#
+# ----------------------------
 
 def scikitAlgorithms_buildClassifier(input_dict):
     """ Builds a classifier """

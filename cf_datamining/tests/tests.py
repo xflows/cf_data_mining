@@ -36,3 +36,25 @@ class TestLinearSVC(unittest.TestCase):
 
         self.assertIs(len(clf), 5)
 
+
+    def test_regression(self):
+        """ Tests several regression methods from the regression.py file
+        :return: True if all tests pass
+        """
+
+        import cf_datamining.regression as r
+        clf = []
+        try:
+            clf.append( r.svr() )
+            clf.append( r.elasticNet() )
+            clf.append( r.ridge() )
+            clf.append( r.ardRegression() )
+            clf.append( r.decisionTreeRegressor() )
+            clf.append( r.lassoLARS() )
+            clf.append( r.sgdRegressor() )
+
+        except Exception, e:
+            print "Exception: " + e
+
+        self.assertIs(len(clf), 7)
+

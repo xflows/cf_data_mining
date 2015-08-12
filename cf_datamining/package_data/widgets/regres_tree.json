@@ -11,7 +11,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "61d7acc2-72c8-4943-a602-fcbabea6320f", 
-      "variable": "featureIn", 
+      "variable": "maxFeaturesIn", 
       "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d"
     }, 
     "model": "workflows.abstractinput"
