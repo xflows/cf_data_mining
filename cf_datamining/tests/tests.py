@@ -2,59 +2,98 @@ __author__ = 'darkoa'
 
 import unittest
 
+import cf_datamining.classification as c, cf_datamining.regression as r, cf_datamining.unsupervised as u
+import cf_datamining.evaluation as ev, cf_datamining.utilities as ut
+
 class TestLinearSVC(unittest.TestCase):
 
-    def test_linearSVC(self):
-        """ Tests a single classification method: linearSVC
-        :return: True if all tests pass
-        """
-        import cf_datamining.classification as c
-        clf = None
-        try:
-            clf = c.linearSVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr")
-        except Exception, e:
-            print "Exception: " + e
 
-        self.assertIsNotNone(clf)
-
-    def test_classification(self):
-        """ Tests several classification methods from the classification.py file
-        :return: True if all tests pass
+    def testClassificationLearners(self):
+        """ Tests creating classification learners from the classification.py file
+        :return: a list of learners
         """
 
-        import cf_datamining.classification as c
-        clf = []
+        lrn = []
         try:
-            clf.append( c.linearSVC() )
-            clf.append( c.logisticRegression() )
-            clf.append( c.kNearestNeighbors() )
-            clf.append( c.kNearestNeighbors() )
-            clf.append( c.J48() )
+            lrn.append( c.linearSVC() )
+            lrn.append( c.logisticRegression() )
+            lrn.append( c.kNearestNeighbors() )
+            lrn.append( c.kNearestNeighbors() )
+            lrn.append( c.J48() )
+            lrn.append( c.naiveBayes() )
+            lrn.append( c.SVC() )
 
         except Exception, e:
             print "Exception: " + e
 
-        self.assertIs(len(clf), 5)
+        self.assertIs(len(lrn), 7)
+        return lrn
 
 
-    def test_regression(self):
-        """ Tests several regression methods from the regression.py file
-        :return: True if all tests pass
+    def testRegressionLearners(self):
+        """ Tests creating several regression learners from the regression.py file
+        :return: a list of learners
         """
 
-        import cf_datamining.regression as r
-        clf = []
+        lrn = []
         try:
-            clf.append( r.svr() )
-            clf.append( r.elasticNet() )
-            clf.append( r.ridge() )
-            clf.append( r.ardRegression() )
-            clf.append( r.decisionTreeRegressor() )
-            clf.append( r.lassoLARS() )
-            clf.append( r.sgdRegressor() )
+            lrn.append( r.svr() )
+            lrn.append( r.elasticNet() )
+            lrn.append( r.ridge() )
+            lrn.append( r.ardRegression() )
+            lrn.append( r.decisionTreeRegressor() )
+            # lrn.append( r.lassoLARS() ) # complains about data scaling ?
+            # lrn.append( r.sgdRegressor() )# complains about data scaling ?
 
         except Exception, e:
             print "Exception: " + e
 
-        self.assertIs(len(clf), 7)
+        self.assertIs(len(lrn), 5)
+        return lrn
 
+# --------------------------------------------------------------------------------------------------------------------------
+
+    def testClassificationModels(self):
+        """ Tests building classification models using provided learners
+        :return: True if all tests pass
+        """
+
+        lrn_arr =  self.testClassificationLearners()
+        for lrn in lrn_arr:
+            try:
+                # lrn = c.linearSVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr")
+
+                # regressionDataset       = ut.loadUCIDataset("boston")
+                classificationDataset   = ut.loadUCIDataset("iris")
+
+                clf = ev.buildClassifier(lrn, classificationDataset)
+
+
+            except Exception, e:
+                clf = None
+                print "Exception: " + e
+
+            self.assertIsNotNone(clf)
+
+
+    def testRegressionModels(self):
+        """ Tests building regression models using provided learners
+        :return: True if all tests pass
+        """
+
+        lrn_arr =  self.testRegressionLearners()
+        for lrn in lrn_arr:
+            try:
+                # lrn = c.linearSVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr")
+
+                regressionDataset       = ut.loadUCIDataset("boston")
+                # classificationDataset   = ut.loadUCIDataset("iris")
+
+                clf = ev.buildClassifier(lrn, regressionDataset)
+
+
+            except Exception, e:
+                clf = None
+                print "Exception: " + e
+
+            self.assertIsNotNone(clf)

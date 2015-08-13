@@ -5,7 +5,7 @@ __author__ = 'darkoa'
 
 import numpy as np
 import classification as c, regression as r, unsupervised as u
-
+import evaluation as e, utilities as ut
 
 # -------------------
 #   CLASSIFICATION
@@ -157,64 +157,61 @@ def scikitAlgorithms_AglomerativeClustering(input_dict):
     return {'clusteredData':clusteredData}
 
 
+
 # ----------------------------
-#   UTILITIES and EVALUATION
+#   EVALUATION
 # ----------------------------
-
-def scikitAlgorithms_buildClassifier(input_dict):
-    """ Builds a classifier """
-
-    learner = input_dict['learner']
-    data = input_dict['instances']
-    n_sample = data["data"]
-    n_feature = data["target"]
-    # print " --" + str(n_sample)
-    # print "---" + str(n_feature)
-
-    classifier = learner.fit(n_sample, n_feature) #.predict(n_sample)
-
-    output_dict = {'classifier': classifier}
-    return output_dict
-
-def scikitAlgorithms_applyClassifier(input_dict):
-    """ Applies a built classifier on a dataset """
-    classifier = input_dict['classifier']
-    data = input_dict['data']
-    data["targetPredicted"] = classifier.predict(data["data"])
-
-    # new_data = (data["data"], classifier.predict(data["data"]))
-   
-    output_dict = {'classes':data}
-    return output_dict
-
-def helper_extractTrueValuesAndPredictions(input_dict):
-    y_true = input_dict["data"]["target"]
-    y_pred = input_dict["data"]["targetPredicted"]
-    return (y_true, y_pred)
-
 
 def scikitAlgorithms_accuracyScore(input_dict):
-    """ 
+    """
     Calculates classification accuracy.
     Expects a SciKit dataset structure on input, with the field 'targetPredicted'
     """
-    y_true, y_pred = helper_extractTrueValuesAndPredictions(input_dict)
-    from sklearn.metrics import accuracy_score
-    resAcc = accuracy_score( y_true, y_pred )
 
-    return { 'ca':resAcc }
+    acc = e.accuracyScore(input_dict["data"])
+    return { 'ca':acc }
+
 
 def scikitAlgorithms_MSE(input_dict):
     """
     Calculates mean_squared_error (MSE)
     """
-    from sklearn.metrics import mean_squared_error
-    y_true, y_pred = helper_extractTrueValuesAndPredictions(input_dict)
-    # print str( y_true )    print str( y_pred )
-    resMSE = mean_squared_error(y_true, y_pred)
-    # print str( resMSE )
-    return {'mse': resMSE}
+    mse = e.mse(input_dict["data"])
+    return {'mse': mse}
 
+
+
+def scikitAlgorithms_buildClassifier(input_dict):
+    """ Builds a classifier """
+
+    clf = e.buildClassifier(input_dict['learner'], input_dict["instances"])
+
+    output_dict = {'classifier': clf}
+    return output_dict
+
+def scikitAlgorithms_applyClassifier(input_dict):
+    """ Applies a built classifier on a dataset """
+
+    new_data = e.applyClassifier(input_dict['classifier'], input_dict['data'])
+
+    output_dict = {'classes':new_data}
+    return output_dict
+
+
+
+# ----------------------------
+#   UTILITIES
+# ----------------------------
+
+
+def scikitAlgorithms_UCIDataset(input_dict):
+    """ Loads a UCI dataset """
+
+    dataset = ut.loadUCIDataset(input_dict['dsIn'])
+
+    output_dict = {}
+    output_dict['dtsOut'] = dataset#(dataset.data, dataset.target)
+    return output_dict
 
 
 def scikitAlgorithms_displayDecisionTree(input_dict):
@@ -231,17 +228,6 @@ def scikitAlgorithms_displayDecisionTree(input_dict):
     # dotfile.close()
     system("dot -Tpng decisionTreeJ48-scikit.dot -o workflows/static/decisionTree-scikit.png") #CORRECT SO THAT IMAGE IS GOING TO BE SAVED IN THE CORRECT DIRECTORY
     return {}
-
-
-def scikitAlgorithms_UCIDataset(input_dict):
-    """ Loads a UCI dataset """
-    from sklearn import datasets
-    allDSets = {"iris":datasets.load_iris(), "boston":datasets.load_boston(), "diabetes":datasets.load_diabetes(), " linnerud":datasets.load_linnerud()}
-    dataset = allDSets[input_dict['dsIn']]
-    output_dict = {}
-    output_dict['dtsOut'] = dataset#(dataset.data, dataset.target)
-    return output_dict
-
 
 
 def scikitAlgorithms_scikitDatasetToCSV(input_dict):
@@ -346,8 +332,8 @@ def scikitAlgorithms_select_data_post(postdata, input_dict, output_dict):
                     data_compl = data_compl[ data_compl[:,attrInd] == val[0], :  ]
 
 
-    output_dict['data']['data'] = data_compl[:, 0:-1]
-    output_dict['data']['target'] =  data_compl[ :, -1 ]
+    output_dict['data']['data']     = data_compl[:, 0:-1]
+    output_dict['data']['target']   = data_compl[ :, -1 ]
 
     return output_dict
 
