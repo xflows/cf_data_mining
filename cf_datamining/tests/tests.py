@@ -5,7 +5,7 @@ import unittest
 import cf_datamining.classification as c, cf_datamining.regression as r, cf_datamining.unsupervised as u
 import cf_datamining.evaluation as ev, cf_datamining.utilities as ut
 
-class TestLinearSVC(unittest.TestCase):
+class Tests_CF_Datamining(unittest.TestCase):
 
 
     def testClassificationLearners(self):
@@ -68,7 +68,6 @@ class TestLinearSVC(unittest.TestCase):
 
                 clf = ev.buildClassifier(lrn, classificationDataset)
 
-
             except Exception, e:
                 clf = None
                 print "Exception: " + e
@@ -90,7 +89,6 @@ class TestLinearSVC(unittest.TestCase):
                 # classificationDataset   = ut.loadUCIDataset("iris")
 
                 clf = ev.buildClassifier(lrn, regressionDataset)
-
 
             except Exception, e:
                 clf = None
