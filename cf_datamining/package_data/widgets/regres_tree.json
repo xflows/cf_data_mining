@@ -47,7 +47,7 @@
   }, 
   {
     "fields": {
-      "action": "scikitAlgorithms_DecisionTreeRegressor", 
+      "action": "regression_tree",
       "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
       "description": "A decision tree regressor", 
       "has_progress_bar": false, 

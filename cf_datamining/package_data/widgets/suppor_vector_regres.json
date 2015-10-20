@@ -13,7 +13,7 @@
   }, 
   {
     "fields": {
-      "action": "scikitAlgorithms_SVR", 
+      "action": "support_vector_regression",
       "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
       "description": "Epsilon-Support Vector Regression, using the RBF kernel. Non-linear regression using Support Vector Machines (wrapper for libsvm)", 
       "has_progress_bar": false, 

@@ -59,7 +59,7 @@
   },
   {
     "fields": {
-      "action": "scikitAlgorithms_kMeans",
+      "action": "k_means",
       "category": "ef06ed94-c57a-4ea4-8fa5-1222920c95a0",
       "description": "k-Means",
       "has_progress_bar": false,

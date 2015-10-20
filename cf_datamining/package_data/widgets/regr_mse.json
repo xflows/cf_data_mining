@@ -30,7 +30,7 @@
   }, 
   {
     "fields": {
-      "action": "scikitAlgorithms_MSE", 
+      "action": "regression_mse",
       "category": "5888aa38-270f-423b-8d5f-e08f23c1a3b9", 
       "description": "One of the several alternative measures to be used to evaluate the success of numeric prediction.", 
       "has_progress_bar": false, 

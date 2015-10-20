@@ -63,8 +63,8 @@ class Tests_CF_Datamining(unittest.TestCase):
             try:
                 # lrn = c.linearSVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr")
 
-                # regressionDataset       = ut.loadUCIDataset("boston")
-                classificationDataset   = ut.loadUCIDataset("iris")
+                # regressionDataset       = ut.load_UCI_dataset("boston")
+                classificationDataset   = ut.load_UCI_dataset("iris")
 
                 clf = ev.buildClassifier(lrn, classificationDataset)
 
@@ -85,8 +85,8 @@ class Tests_CF_Datamining(unittest.TestCase):
             try:
                 # lrn = c.linearSVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr")
 
-                regressionDataset       = ut.loadUCIDataset("boston")
-                # classificationDataset   = ut.loadUCIDataset("iris")
+                regressionDataset       = ut.load_UCI_dataset("boston")
+                # classificationDataset   = ut.load_UCI_dataset("iris")
 
                 clf = ev.buildClassifier(lrn, regressionDataset)
 

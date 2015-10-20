@@ -135,7 +135,7 @@
   }, 
   {
     "fields": {
-      "action": "scikitAlgorithms_linearSVC", 
+      "action": "linear_svc",
       "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
       "description": "Support Vector Machines without kernels based on liblinear\r\n\r\nC : {float} - Penalty parameter C of the error term.\r\nloss : string, \u2018l1\u2019 or \u2018l2\u2019 (default=\u2019l2\u2019) Specifies the loss function. \u2018l1\u2019 is the hinge loss (standard SVM) while \u2018l2\u2019 is the squared hinge loss.\r\npenalty : string, \u2018l1\u2019 or \u2018l2\u2019 (default=\u2019l2\u2019) Specifies the norm used in the penalization. The \u2018l2\u2019 penalty is the standard used in SVC. The \u2018l1\u2019 leads to coef_ vectors that are sparse.\r\n\r\nmulti_class: string, \u2018ovr\u2019 or \u2018crammer_singer\u2019 (default=\u2019ovr\u2019) :\r\nDetermines the multi-class strategy if y contains more than two classes. ovr trains n_classes one-vs-rest classifiers, while crammer_singer optimizes a joint objective over all classes. While crammer_singer is interesting from an theoretical perspective as it is consistent it is seldom used in practice and rarely leads to better accuracy and is more expensive to compute. If crammer_singer is chosen, the options loss, penalty and dual will be ignored.", 
       "has_progress_bar": false, 

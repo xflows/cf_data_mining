@@ -66,9 +66,9 @@
   }, 
   {
     "fields": {
-      "action": "scikitAlgorithms_UCIDataset", 
+      "action": "load_UCI_dataset",
       "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0", 
-      "description": "Loads a UCI dataset", 
+      "description": "Loads a UCI Dataset",
       "has_progress_bar": false, 
       "interaction_view": "", 
       "is_streaming": false, 

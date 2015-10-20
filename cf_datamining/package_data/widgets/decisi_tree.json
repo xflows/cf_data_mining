@@ -47,7 +47,7 @@
   }, 
   {
     "fields": {
-      "action": "scikitAlgorithms_J48", 
+      "action": "j48",
       "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
       "description": "max_features : {int, float or string } The number of features to consider when looking for the best split:\r\n\r\nint, then consider max_features features at each split.\r\nfloat, then max_features is a percentage and int(max_features * n_features) features are considered at each split.\r\n\u201cauto\u201d, then max_features=sqrt(n_features).\r\n\u201csqrt\u201d, then max_features=sqrt(n_features).\r\n\u201clog2\u201d, then max_features=log2(n_features).\r\nNone, then max_features=n_features.\r\n\r\nmax_depth : {integer} The maximum depth of the tree. \r\n", 
       "has_progress_bar": false, 

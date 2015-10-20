@@ -30,9 +30,9 @@
   }, 
   {
     "fields": {
-      "action": "scikitAlgorithms_CSVtoNumpy", 
+      "action": "import_dataset_from_csv",
       "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0", 
-      "description": "Transforms CSV file into Scikit-learn dataset. Result values must be in the last column", 
+      "description": "Imports a Dataset From an CSV Textual Format.",
       "has_progress_bar": false, 
       "interaction_view": "", 
       "is_streaming": false, 

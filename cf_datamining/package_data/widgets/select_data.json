@@ -30,12 +30,12 @@
   }, 
   {
     "fields": {      
-      "action": "scikitAlgorithms_select_data", 
-      "interaction_view": "scikitAlgorithms_select_data", 
-      "post_interact_action": "scikitAlgorithms_select_data_post",
+      "action": "select_data",
+      "interaction_view": "select_data",
+      "post_interact_action": "select_data_post",
       "interactive": true,
       
-      "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0", 
+      "category": "00d411b2-29b8-4966-8f33-aff8bf0e5244",
       "description": "This widget allows the user to select a subset of the data from the input data set based on the condition defined over a set of data\u2019s attributes. Data instances that match the selection rule are placed on the output channel.", 
       "has_progress_bar": false,       
       "is_streaming": false, 

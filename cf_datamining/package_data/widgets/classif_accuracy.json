@@ -30,7 +30,7 @@
   }, 
   {
     "fields": {
-      "action": "scikitAlgorithms_accuracyScore", 
+      "action": "classification_accuracy",
       "category": "5888aa38-270f-423b-8d5f-e08f23c1a3b9", 
       "description": "Computes classification accuracy, i.e. percentage of matches between predicted and actual class. The function returns a list of classification accuracies of all classifiers tested. If reportSE is set to true, the list will contain tuples with accuracies and standard errors.", 
       "has_progress_bar": false, 

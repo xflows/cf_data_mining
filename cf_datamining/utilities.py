@@ -1,7 +1,7 @@
 __author__ = 'darkoa'
 
 
-def loadUCIDataset(dsIn):
+def load_UCI_dataset(dsIn):
     '''Loads a UCI dataset
 
     :param dsIn: the dataset name

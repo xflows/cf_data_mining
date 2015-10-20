@@ -65,7 +65,7 @@
   }, 
   {
     "fields": {
-      "action": "scikitAlgorithms_logisticRegression", 
+      "action": "logistic_regression",
       "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
       "description": "penalty : {string} Used to specify the norm used in the penalization.\r\n\u2018l1\u2019 or \u2018l2\u2019\r\n\r\nC : {float} \r\nInverse of regularization strength; must be a positive float. Like in support vector machines, smaller values specify stronger regularization.", 
       "has_progress_bar": false, 

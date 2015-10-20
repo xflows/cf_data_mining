@@ -60,12 +60,12 @@
   {
     "fields": {
       "action": "scikitAlgorithms_split_dataset",
-      "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0",
+      "category": "00d411b2-29b8-4966-8f33-aff8bf0e5244",
       "description": "Randomly splits a given dataset into a train and test dataset.",
       "has_progress_bar": false,
       "interaction_view": "",
       "is_streaming": false,
-      "name": "Split dataset",
+      "name": "Split Dataset Randomly",
       "order": 1,
       "static_image": "split_dataset.png",
       "streaming_visualization_view": "",
