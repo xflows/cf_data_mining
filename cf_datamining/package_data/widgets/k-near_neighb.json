@@ -57,7 +57,7 @@
       "order": 1, 
       "short_name": "lrn", 
       "uid": "62d4cc9a-d6f1-4a84-8f49-0685676e2ce8", 
-      "variable": "KNNout", 
+      "variable": "KNN_out",
       "widget": "9996e844-67e4-49a6-ac1f-8b64cd72cc1c"
     }, 
     "model": "workflows.abstractoutput"

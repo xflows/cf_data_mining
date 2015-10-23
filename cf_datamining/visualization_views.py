@@ -1,14 +1,21 @@
 from django.shortcuts import render
 
-def export_dataset_to_CSV(request,input_dict,output_dict,widget):
+def export_dataset_to_csv(request,input_dict,output_dict,widget):
+    """Visualization for exporting dataset to CSV file and download of the file
+
+    :param request:
+    :param input_dict:
+    :param output_dict:
+    :param widget:
+    :return:
+    """
     from cf_base import helpers
     import numpy
 
     output_dict={}
-    dataset= input_dict['scikitDataset']
+    dataset= input_dict['dataset']
 
     csv=[]
-    count=0
     for i,sample in enumerate(dataset.data):
         csv.append(numpy.append(sample,dataset.target[i])) #join n_sample and n_feature array
 
@@ -21,16 +28,24 @@ def export_dataset_to_CSV(request,input_dict,output_dict,widget):
 
 
 def display_dataset(request,input_dict,output_dict,widget):
-    display_data = helper_display_dataset(input_dict)
-    return render(request, 'visualizations/scikitAlgorithms_displayDS.html',{'widget':widget,'input_dict':input_dict,'output_dict':display_data})
+    """Visualization displaying a dataset using a table viewer
+
+    :param request:
+    :param input_dict:
+    :param output_dict:
+    :param widget:
+    :return:
+    """
+    display_data = helper_display_dataset(input_dict['data'])
+    return render(request, 'visualizations/display_dataset.html',{'widget':widget,'input_dict':input_dict,'output_dict':display_data})
 
 
-def helper_display_dataset(data):
-    """ helper_display_dataset """
+def helper_display_dataset(bunch):
+    """Helper for display_dataset visualization
 
-    #get data to fill table
-    bunch = data['data']
-    print type(bunch)
+    :param bunch:
+    :return: a dict
+    """
 
     data = bunch["data"]
     target = bunch["target"]
@@ -83,6 +98,14 @@ def helper_display_dataset(data):
 
 
 def display_clustering_table_form(request,input_dict,output_dict,widget):
+    """Visualization displaying a dataset table along with cluster associations for each instance
+
+    :param request:
+    :param input_dict:
+    :param output_dict:
+    :param widget:
+    :return:
+    """
     display_data = helper_display_dataset(input_dict)
     bunch = input_dict["data"]
     display_data['attrs'].append('class')
@@ -91,15 +114,22 @@ def display_clustering_table_form(request,input_dict,output_dict,widget):
     for i, row in enumerate( display_data['data_new'] ):
         row.append( bunch['cluster_id'][i] )
 
-
-    return render(request, 'visualizations/scikitAlgorithms_displayDS.html',{'widget':widget,'input_dict':input_dict,'output_dict':display_data})
+    return render(request, 'visualizations/display_dataset.html',{'widget':widget,'input_dict':input_dict,'output_dict':display_data})
 
 
 def display_decision_tree(request,input_dict,output_dict,widget):
-    pngFile = 'decisionTree-scikit.png'
+    """Visualization displaying a decision tree
+
+    :param request:
+    :param input_dict:
+    :param output_dict:
+    :param widget:
+    :return:
+    """
+
+    png_file = 'decision_tree.png'
 
     import datetime
-    my_dict = {'pngfile':pngFile, 'param':str( datetime.datetime.now().time() )} # param: used to force reload of image
+    my_dict = {'pngfile':png_file, 'param':str( datetime.datetime.now().time() )} # param: used to force reload of image
 
-    return render(request, 'visualizations/scikitAlgorithms_displayDecisTree.html',{'widget':widget,'input_dict':input_dict,'output_dict':my_dict })
-
+    return render(request, 'visualizations/display_decision_tree.html',{'widget':widget,'input_dict':input_dict,'output_dict':my_dict })

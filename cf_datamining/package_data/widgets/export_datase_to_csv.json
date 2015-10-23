@@ -11,14 +11,14 @@
       "required": true, 
       "short_name": "dts", 
       "uid": "8782c523-ca3c-43f2-9c49-29ddb706a67e", 
-      "variable": "scikitDataset", 
+      "variable": "dataset",
       "widget": "1bc483d6-4d6c-435f-9fc0-ad3716fe390b"
     }, 
     "model": "workflows.abstractinput"
   }, 
   {
     "fields": {
-      "action": "export_dataset_to_CSV",
+      "action": "export_dataset_to_csv",
       "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0", 
       "description": "Export dataset to a CSV file", 
       "has_progress_bar": false, 
@@ -30,7 +30,7 @@
       "streaming_visualization_view": "", 
       "treeview_image": "", 
       "uid": "1bc483d6-4d6c-435f-9fc0-ad3716fe390b",
-      "visualization_view": "export_dataset_to_CSV",
+      "visualization_view": "export_dataset_to_csv",
       "windows_queue": false
     }, 
     "model": "workflows.abstractwidget"

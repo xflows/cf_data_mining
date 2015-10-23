@@ -1,6 +1,6 @@
 __author__ = 'darkoa'
 
-def kMeans(instances, k):
+def k_means(instances, k):
     """k-Means clustering
 
     :param instances: data instances
@@ -25,7 +25,7 @@ def kMeans(instances, k):
     return (k_means_cluster_centers, data)  #  clusterCenters , clusteredData
 
 
-def aglomerativeClustering(instances, k):
+def aglomerative_clustering(instances, k):
     """Hierarchical Agglomerative Clustering, using the Ward linkage and euclidean metric.
 
     :param instances: data instances
@@ -46,4 +46,4 @@ def aglomerativeClustering(instances, k):
 
     data["cluster_id"] = agl_clust_labels
 
-    return data  #clusteredData
+    return data

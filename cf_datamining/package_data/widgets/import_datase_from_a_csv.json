@@ -23,7 +23,7 @@
       "order": 1, 
       "short_name": "dts", 
       "uid": "f0fe78a8-00ab-4266-9e2f-aaea3dc6492d", 
-      "variable": "scikitDataset", 
+      "variable": "dataset",
       "widget": "ae9c30f4-22a5-49f0-a678-6a9fc71c3518"
     }, 
     "model": "workflows.abstractoutput"

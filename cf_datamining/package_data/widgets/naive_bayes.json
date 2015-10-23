@@ -6,7 +6,7 @@
       "order": 1, 
       "short_name": "lst", 
       "uid": "3ceddb72-81fd-48ff-b73d-73f34ffa7642", 
-      "variable": "bayesout", 
+      "variable": "bayes_out",
       "widget": "14161bcf-f025-47a4-abe9-a34ec848cf1c"
     }, 
     "model": "workflows.abstractoutput"

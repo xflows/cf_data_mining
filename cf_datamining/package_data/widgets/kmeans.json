@@ -40,7 +40,7 @@
       "order": 1,
       "short_name": "clu",
       "uid": "62d4cc9a-d6f1-4a84-8f49-0685676e2c13",
-      "variable": "clusterCenters",
+      "variable": "cluster_centers",
       "widget": "9996e844-67e4-49a6-ac1f-8b64cd72ac3e"
     },
     "model": "workflows.abstractoutput"
@@ -52,7 +52,7 @@
       "order": 1,
       "short_name": "clu",
       "uid": "62d4cc9a-d6f1-4a84-8f49-0685676e5c12",
-      "variable": "clusteredData",
+      "variable": "clustered_data",
       "widget": "9996e844-67e4-49a6-ac1f-8b64cd72ac3e"
     },
     "model": "workflows.abstractoutput"

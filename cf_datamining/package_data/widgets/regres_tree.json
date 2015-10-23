@@ -40,7 +40,7 @@
       "order": 1, 
       "short_name": "lrn", 
       "uid": "dc4f1e7a-aaf9-45a2-8d00-51ddb3948e23", 
-      "variable": "treeOut", 
+      "variable": "tree_out",
       "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d"
     }, 
     "model": "workflows.abstractoutput"

@@ -11,7 +11,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "61d7acc2-72c8-4943-a602-fcbabea6cc0f", 
-      "variable": "maxFeaturesIn", 
+      "variable": "max_features_in",
       "widget": "2e92b1c1-0d1a-4569-a003-0bb3b9400801"
     }, 
     "model": "workflows.abstractinput"
@@ -28,7 +28,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "d3fe38b1-f3b2-4364-a30e-dac5a27d3dfa", 
-      "variable": "depthIn", 
+      "variable": "depth_in",
       "widget": "2e92b1c1-0d1a-4569-a003-0bb3b9400801"
     }, 
     "model": "workflows.abstractinput"
@@ -40,14 +40,14 @@
       "order": 1, 
       "short_name": "lrn", 
       "uid": "c1eedb63-fabc-46c4-b751-7e7072847180", 
-      "variable": "treeOut", 
+      "variable": "tree_out",
       "widget": "2e92b1c1-0d1a-4569-a003-0bb3b9400801"
     }, 
     "model": "workflows.abstractoutput"
   }, 
   {
     "fields": {
-      "action": "j48",
+      "action": "decision_tree",
       "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
       "description": "max_features : {int, float or string } The number of features to consider when looking for the best split:\r\n\r\nint, then consider max_features features at each split.\r\nfloat, then max_features is a percentage and int(max_features * n_features) features are considered at each split.\r\n\u201cauto\u201d, then max_features=sqrt(n_features).\r\n\u201csqrt\u201d, then max_features=sqrt(n_features).\r\n\u201clog2\u201d, then max_features=log2(n_features).\r\nNone, then max_features=n_features.\r\n\r\nmax_depth : {integer} The maximum depth of the tree. \r\n", 
       "has_progress_bar": false, 

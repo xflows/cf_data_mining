@@ -11,7 +11,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "2404bc82-b32b-4787-acd4-82ceef160c22", 
-      "variable": "cIn", 
+      "variable": "c_in",
       "widget": "bab37f12-8d69-4823-a86b-13af7e1cb00d"
     }, 
     "model": "workflows.abstractinput"
@@ -28,7 +28,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "4511ba8c-015c-4e26-8ca4-164c74afde18", 
-      "variable": "lossIn", 
+      "variable": "loss_in",
       "widget": "bab37f12-8d69-4823-a86b-13af7e1cb00d"
     }, 
     "model": "workflows.abstractinput"
@@ -45,7 +45,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "b8b407d1-c11e-4829-a851-f1cd9ebe1409", 
-      "variable": "penaltyIn", 
+      "variable": "penalty_in",
       "widget": "bab37f12-8d69-4823-a86b-13af7e1cb00d"
     }, 
     "model": "workflows.abstractinput"
@@ -62,7 +62,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "da13b053-3d1b-48ad-a046-5683143f1391", 
-      "variable": "multiClassIn", 
+      "variable": "multi_class_in",
       "widget": "bab37f12-8d69-4823-a86b-13af7e1cb00d"
     }, 
     "model": "workflows.abstractinput"
@@ -74,7 +74,7 @@
       "order": 1, 
       "short_name": "lrn", 
       "uid": "592151e0-6d55-4a42-bec2-f60cfd59dc2a", 
-      "variable": "SVCout", 
+      "variable": "SVC_out",
       "widget": "bab37f12-8d69-4823-a86b-13af7e1cb00d"
     }, 
     "model": "workflows.abstractoutput"
@@ -135,9 +135,9 @@
   }, 
   {
     "fields": {
-      "action": "linear_svc",
+      "action": "support_vector_machines_classification_using_liblinear",
       "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii", 
-      "description": "Support Vector Machines without kernels based on liblinear\r\n\r\nC : {float} - Penalty parameter C of the error term.\r\nloss : string, \u2018l1\u2019 or \u2018l2\u2019 (default=\u2019l2\u2019) Specifies the loss function. \u2018l1\u2019 is the hinge loss (standard SVM) while \u2018l2\u2019 is the squared hinge loss.\r\npenalty : string, \u2018l1\u2019 or \u2018l2\u2019 (default=\u2019l2\u2019) Specifies the norm used in the penalization. The \u2018l2\u2019 penalty is the standard used in SVC. The \u2018l1\u2019 leads to coef_ vectors that are sparse.\r\n\r\nmulti_class: string, \u2018ovr\u2019 or \u2018crammer_singer\u2019 (default=\u2019ovr\u2019) :\r\nDetermines the multi-class strategy if y contains more than two classes. ovr trains n_classes one-vs-rest classifiers, while crammer_singer optimizes a joint objective over all classes. While crammer_singer is interesting from an theoretical perspective as it is consistent it is seldom used in practice and rarely leads to better accuracy and is more expensive to compute. If crammer_singer is chosen, the options loss, penalty and dual will be ignored.", 
+      "description": "Support Vector Machines implemented in terms of the package liblinear\r\n\r\nC : {float} - Penalty parameter C of the error term.\r\nloss : string, \u2018l1\u2019 or \u2018l2\u2019 (default=\u2019l2\u2019) Specifies the loss function. \u2018l1\u2019 is the hinge loss (standard SVM) while \u2018l2\u2019 is the squared hinge loss.\r\npenalty : string, \u2018l1\u2019 or \u2018l2\u2019 (default=\u2019l2\u2019) Specifies the norm used in the penalization. The \u2018l2\u2019 penalty is the standard used in SVC. The \u2018l1\u2019 leads to coef_ vectors that are sparse.\r\n\r\nmulti_class: string, \u2018ovr\u2019 or \u2018crammer_singer\u2019 (default=\u2019ovr\u2019) :\r\nDetermines the multi-class strategy if y contains more than two classes. ovr trains n_classes one-vs-rest classifiers, while crammer_singer optimizes a joint objective over all classes. While crammer_singer is interesting from an theoretical perspective as it is consistent it is seldom used in practice and rarely leads to better accuracy and is more expensive to compute. If crammer_singer is chosen, the options loss, penalty and dual will be ignored.",
       "has_progress_bar": false, 
       "interaction_view": "", 
       "is_streaming": false, 

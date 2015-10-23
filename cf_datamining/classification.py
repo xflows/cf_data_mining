@@ -3,7 +3,7 @@
 
 __author__ = 'darkoa'
 
-def naiveBayes():
+def naive_bayes():
     """Naive Bayes algorithm for classification
 
     :return: a GaussianNB object.
@@ -28,7 +28,7 @@ def SVC(penaltyIn=1.0, kernelIn="rbf", degIn=3):
     return clf
 
 
-def kNearestNeighbors(numNeighbIn=5, weithgsIn='uniform', algIn='auto'):
+def k_nearest_neighbors(numNeighbIn=5, weithgsIn='uniform', algIn='auto'):
     """k-Nearest Neighbors classifier based on the ball tree datastructure for low dimensional data and brute force search for high dimensional data
 
     :param numNeighbIn: Number of neighbors to use by default for k_neighbors queries.
@@ -42,7 +42,7 @@ def kNearestNeighbors(numNeighbIn=5, weithgsIn='uniform', algIn='auto'):
     return knn
 
 
-def logisticRegression(penaltyIn="l1", cIn=1.0):
+def logistic_regression(penaltyIn="l1", cIn=1.0):
     """Logistic regression classifier.
 
     :param penaltyIn: the penalty, (string) used to specify the norm used in the penalization. ‘l1’ or ‘l2’.
@@ -54,8 +54,8 @@ def logisticRegression(penaltyIn="l1", cIn=1.0):
     return clf
 
 
-def linearSVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr"):
-    """Support Vector Regression, without kernels, based on liblinear
+def linear_SVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr"):
+    """Support Vector Regression, implemented in terms of liblinear
 
     :param cIn: Penalty parameter C of the error term. float, default=1.0
     :param lossIn: Specifies the loss function. string, ‘l1’ or ‘l2’, default=’l2’

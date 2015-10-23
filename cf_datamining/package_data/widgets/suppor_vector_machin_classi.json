@@ -11,7 +11,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "83daa60b-af19-4d20-81d9-cdbdb78afd75", 
-      "variable": "penaltyIn", 
+      "variable": "penalty_in",
       "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb"
     }, 
     "model": "workflows.abstractinput"
@@ -28,7 +28,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "8f21f50d-caf6-4bdb-9dd4-0c5e35466cac", 
-      "variable": "degIn", 
+      "variable": "deg_in",
       "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb"
     }, 
     "model": "workflows.abstractinput"
@@ -45,7 +45,7 @@
       "required": false, 
       "short_name": "par", 
       "uid": "e1d631a9-e85b-4734-a3df-813b638def50", 
-      "variable": "kernelIn", 
+      "variable": "kernel_in",
       "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb"
     }, 
     "model": "workflows.abstractinput"
@@ -57,7 +57,7 @@
       "order": 1, 
       "short_name": "lrn", 
       "uid": "1900d766-a254-4c3a-9495-51a836f642b6", 
-      "variable": "SVCout", 
+      "variable": "SVC_out",
       "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb"
     }, 
     "model": "workflows.abstractoutput"

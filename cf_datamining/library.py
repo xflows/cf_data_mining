@@ -16,52 +16,52 @@ def naive_bayes(input_dict):
     from sklearn.naive_bayes import GaussianNB 
     y_pred = GaussianNB()
     output_dict={}
-    output_dict['bayesout'] = c.naiveBayes()
-    return output_dict
-
-def support_vector_machines_classification(input_dict):
-    """Support Vector Machines with kernels based on libsvm"""
-    output_dict={}
-    output_dict['SVCout'] = c.SVC( input_dict["penaltyIn"], input_dict["kernelIn"], input_dict["degIn"])
+    output_dict['bayes_out'] = c.naive_bayes()
     return output_dict
 
 def k_nearest_neighbors(input_dict):
     """k-Nearest Neighbors classifier based on the ball tree datastructure for low dimensional data and brute force search for high dimensional data"""
 
-    knn = c.kNearestNeighbors(input_dict['numNeib'], input_dict['wgIn'], input_dict['algIn'] )
+    knn = c.k_nearest_neighbors(input_dict['numNeib'], input_dict['wgIn'], input_dict['algIn'] )
     output_dict={}
-    output_dict['KNNout'] = knn
+    output_dict['KNN_out'] = knn
     return output_dict
 
 
 def logistic_regression(input_dict):
     '''Logistic regression classifier.'''
     output_dict={}
-    output_dict['LRout'] = c.logisticRegression(input_dict["penIn"], input_dict["cIn"])
+    output_dict['LR_out'] = c.logistic_regression(input_dict["pen_in"], input_dict["c_in"])
     return output_dict
 
-def linear_svc(input_dict):
+def support_vector_machines_classification(input_dict):
+    """Support Vector Machines with kernels based on libsvm"""
+    output_dict={}
+    output_dict['SVC_out'] = c.SVC( input_dict["penalty_in"], input_dict["kernel_in"], input_dict["deg_in"])
+    return output_dict
+
+def support_vector_machines_classification_using_liblinear(input_dict):
     """ Support Vector Regression, without kernels, based on liblinear """
 
-    clf = c.linearSVC(cIn=float(input_dict["cIn"]),lossIn=input_dict["lossIn"],penaltyIn=input_dict["penaltyIn"], multiClassIn=input_dict["multiClassIn"])
+    clf = c.linear_SVC(cIn=float(input_dict["c_in"]),lossIn=input_dict["loss_in"],penaltyIn=input_dict["penalty_in"], multiClassIn=input_dict["multi_class_in"])
     output_dict={}
-    output_dict['SVCout'] = clf
+    output_dict['SVC_out'] = clf
     return output_dict
 
 
-def j48(input_dict):
+def decision_tree(input_dict):
     """ Creates a J48 decision tree classifier """
 
     #parse input and determine its type
     try:
-        maxFeatures= float(input_dict["maxFeaturesIn"]) if '.' in input_dict["maxFeaturesIn"] else int(input_dict["maxFeaturesIn"]) #return int or float
+        maxFeatures= float(input_dict["max_features_in"]) if '.' in input_dict["max_features_in"] else int(input_dict["max_features_in"]) #return int or float
     except ValueError:
-        maxFeatures= input_dict["maxFeaturesIn"] #return string
+        maxFeatures= input_dict["max_features_in"] #return string
 
-    clf = c.J48(maxFeaturesIn=maxFeatures, depthIn=int(input_dict["depthIn"]))
+    clf = c.J48(maxFeaturesIn=maxFeatures, depthIn=int(input_dict["depth_in"]))
 
     output_dict={}
-    output_dict['treeOut'] = clf
+    output_dict['tree_out'] = clf
     return output_dict
 
 
@@ -77,17 +77,17 @@ def regression_tree(input_dict):
     except ValueError:
         maxFeatures= input_dict["maxFeaturesIn"] #return string
 
-    clf = r.decisionTreeRegressor(maxFeatures, int( input_dict["depthIn"] ))
+    clf = r.regression_tree(maxFeatures, int( input_dict["depthIn"] ))
 
     output_dict={}
-    output_dict['treeOut'] = clf
+    output_dict['tree_out'] = clf
     return output_dict
 
 
 def lasso_LARS(input_dict):
     """ L1-regularized least squares linear model trained with Least Angle Regression. alpha=constant that multiplies the penalty term, default 1.0 """
 
-    clf = r.lassoLARS(alphaIn=float(input_dict["alpha"]))
+    clf = r.lasso_LARS(alpha=float(input_dict["alpha"]))
 
     output_dict={}
     output_dict['out'] = clf
@@ -96,7 +96,7 @@ def lasso_LARS(input_dict):
 def sgd_regressor(input_dict):
     """ Linear model fitted by minimizing a regularized empirical loss with Stochastic Gradient Descent. """
 
-    clf = r.sgdRegressor()
+    clf = r.sgd_regressor()
     output_dict={}
     output_dict['out'] = clf
     return output_dict
@@ -104,14 +104,14 @@ def sgd_regressor(input_dict):
 def ard_regression(input_dict):
     """ Bayesian Automated Relevance Determination regression. n_iter=maximum number of iterations, default 300 """
 
-    clf = r.ardRegression(int(input_dict["n_iter"]))
+    clf = r.ard_regression(int(input_dict["n_iter"]))
     output_dict={}
     output_dict['out'] = clf
     return output_dict
 
 def ridge_regression(input_dict):
     """ L2-regularized least squares linear model """
-    clf = r.ridge()
+    clf = r.ridge_regression()
     output_dict={}
     output_dict['out'] = clf
     return output_dict
@@ -119,7 +119,7 @@ def ridge_regression(input_dict):
 def elastic_net_regression(input_dict):
     """ L1+L2-regularized least squares linear model trained using Coordinate Descent. """
 
-    clf = r.elasticNet()
+    clf = r.elastic_net_regression()
     output_dict={}
     output_dict['out'] = clf
     return output_dict
@@ -141,14 +141,14 @@ def support_vector_regression(input_dict):
 def k_means(input_dict):
     """k-Means clustering"""
 
-    kMeansClusterCenters, clusteredData =  u.kMeans(input_dict['instances'], input_dict['k'])
-    return {'clusterCenters':kMeansClusterCenters, 'clusteredData':clusteredData}
+    kMeansClusterCenters, clusteredData =  u.k_means(input_dict['instances'], input_dict['k'])
+    return {'cluster_centers':kMeansClusterCenters, 'clustered_data':clusteredData}
 
 
 def aglomerative_clustering(input_dict):
     """  Hierarchical Agglomerative Clustering, using the Ward linkage and euclidean metric. The parameter k (num.clusters) needs to be set, default value 3. """
-    clusteredData = u.aglomerativeClustering(input_dict['instances'], input_dict['k'])
-    return {'clusteredData':clusteredData}
+    clusteredData = u.aglomerative_clustering(input_dict['instances'], input_dict['k'])
+    return {'clustered_data':clusteredData}
 
 
 
@@ -198,7 +198,7 @@ def apply_classifier(input_dict):
 # ----------------------------
 
 
-def export_dataset_to_CSV(input_dict):
+def export_dataset_to_csv(input_dict):
     """ Exports a dataset to a CSV file """
     return {}
 
@@ -221,13 +221,12 @@ def display_decision_tree(input_dict):
     from StringIO import StringIO
     out = StringIO()
     out = tree.export_graphviz(input_dict['classifier'], out_file=out)
-    import StringIO, pydot 
+    import StringIO
     from os import system
-    dot_data = StringIO.StringIO() 
 
     tree.export_graphviz(input_dict['classifier'], out_file="decisionTreeJ48-scikit.dot") #dotfile)
-    # dotfile.close()
-    system("dot -Tpng decisionTreeJ48-scikit.dot -o workflows/static/decisionTree-scikit.png") #CORRECT SO THAT IMAGE IS GOING TO BE SAVED IN THE CORRECT DIRECTORY
+    #TODO Is directory OK ?
+    system("dot -Tpng decisionTreeJ48-scikit.dot -o workflows/static/decision_tree.png") #CORRECT SO THAT IMAGE IS GOING TO BE SAVED IN THE CORRECT DIRECTORY
     return {}
 
 
@@ -259,7 +258,7 @@ def import_dataset_from_csv(input_dict):
                  DESCR="",
                  target_names="")
 
-    output_dict['scikitDataset'] =  dataset
+    output_dict['dataset'] =  dataset
     return output_dict # returns a touple consiting of n_samples x n_features numpy array X and an array of length n_samples containing the targets y
 
 def split_dataset(input_dict):
@@ -320,20 +319,35 @@ def select_data_post(postdata, input_dict, output_dict):
 
                 op = str(or_cond['operator'])
                 val= list(or_cond['values'])
-                val= [float(el) for el in val]
-                if op=='>=':
-                    # my_inds = np.where( data_mat[:,attrInd] >= val[0] )
-                    data_compl = data_compl[ data_compl[:,attrInd] >= val[0], :  ]
-                if op=='<=':
-                    data_compl = data_compl[ data_compl[:,attrInd] <= val[0], :  ]
-                if op=='<':
-                    data_compl = data_compl[ data_compl[:,attrInd] < val[0], :  ]
-                if op=='>':
-                    data_compl = data_compl[ data_compl[:,attrInd] > val[0], :  ]
-                if op=='=':
-                    data_compl = data_compl[ data_compl[:,attrInd] == val[0], :  ]
+
                 if op in ['outside', 'between', 'is defined'] :
+                    # TODO Fix
                     raise NotImplementedError
+
+                if op=='in':
+                    # nominal attrubite
+                    att_vals = data.feature_value_names[attrInd]
+                    inds = [att_vals.index(v) for v in val]
+
+                    res = np.empty([0, np.shape(data_compl)[1] ] )
+                    for ind in inds:
+                        matrix_part = data_compl[ data_compl[:,attrInd] == ind, :  ]
+                        res = np.vstack( (res, matrix_part)  )
+                    data_compl = res
+
+                if op in ['>=', '<=', '>', '<', '='] :
+                    val= [float(el) for el in val]
+                    if op=='>=':
+                        # my_inds = np.where( data_mat[:,attrInd] >= val[0] )
+                        data_compl = data_compl[ data_compl[:,attrInd] >= val[0], :  ]
+                    if op=='<=':
+                        data_compl = data_compl[ data_compl[:,attrInd] <= val[0], :  ]
+                    if op=='<':
+                        data_compl = data_compl[ data_compl[:,attrInd] < val[0], :  ]
+                    if op=='>':
+                        data_compl = data_compl[ data_compl[:,attrInd] > val[0], :  ]
+                    if op=='=':
+                        data_compl = data_compl[ data_compl[:,attrInd] == val[0], :  ]
 
 
     output_dict['data']['data']     = data_compl[:, 0:-1]
@@ -341,9 +355,6 @@ def select_data_post(postdata, input_dict, output_dict):
 
     return output_dict
 
-    #return {'data': data, 'dummy':5}
-
-# ===================================================
 
 def display_dataset(input_dict):
     return {}
