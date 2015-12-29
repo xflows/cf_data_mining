@@ -70,6 +70,19 @@ def decision_tree(input_dict):
 #   REGRESSION
 # -------------------
 
+def ard_regression(input_dict):
+    """ Bayesian Automated Relevance Determination regression. n_iter=maximum number of iterations, default 300 """
+
+    # if int(input_dict["n_iter"]) > 10000:
+    #     raise Exception("Number of iterations too large.")
+    #     # return({'error':'Number of iterations too large'})
+
+    clf = r.ard_regression(n_iter = int(input_dict["n_iter"]))
+
+    output_dict={}
+    output_dict['out'] = clf
+    return output_dict
+
 def regression_tree(input_dict):
     #parse input and determine its type
     try:
@@ -85,7 +98,7 @@ def regression_tree(input_dict):
 
 
 def lasso_LARS(input_dict):
-    """ L1-regularized least squares linear model trained with Least Angle Regression. alpha=constant that multiplies the penalty term, default 1.0 """
+    """ L1-regularized least squares linear classifier trained with Least Angle Regression. alpha=constant that multiplies the penalty term, default 1.0 """
 
     clf = r.lasso_LARS(alpha=float(input_dict["alpha"]))
 
@@ -94,30 +107,22 @@ def lasso_LARS(input_dict):
     return output_dict
 
 def sgd_regressor(input_dict):
-    """ Linear model fitted by minimizing a regularized empirical loss with Stochastic Gradient Descent. """
+    """ Linear classifier fitted by minimizing a regularized empirical loss with Stochastic Gradient Descent. """
 
     clf = r.sgd_regressor()
     output_dict={}
     output_dict['out'] = clf
     return output_dict
 
-def ard_regression(input_dict):
-    """ Bayesian Automated Relevance Determination regression. n_iter=maximum number of iterations, default 300 """
-
-    clf = r.ard_regression(int(input_dict["n_iter"]))
-    output_dict={}
-    output_dict['out'] = clf
-    return output_dict
-
 def ridge_regression(input_dict):
-    """ L2-regularized least squares linear model """
+    """ L2-regularized least squares linear classifier """
     clf = r.ridge_regression()
     output_dict={}
     output_dict['out'] = clf
     return output_dict
 
 def elastic_net_regression(input_dict):
-    """ L1+L2-regularized least squares linear model trained using Coordinate Descent. """
+    """ L1+L2-regularized least squares linear classifier trained using Coordinate Descent. """
 
     clf = r.elastic_net_regression()
     output_dict={}
@@ -178,9 +183,9 @@ def regression_mse(input_dict):
 def build_classifier(input_dict):
     """ Builds a classifier """
 
-    clf = e.buildClassifier(input_dict['learner'], input_dict["instances"])
+    e.buildClassifier(input_dict['learner'], input_dict["instances"])
 
-    output_dict = {'classifier': clf}
+    output_dict = {'classifier': input_dict['learner']}
     return output_dict
 
 def apply_classifier(input_dict):
@@ -197,6 +202,18 @@ def apply_classifier(input_dict):
 #   UTILITIES
 # ----------------------------
 
+def print_model(input_dict):
+    """Outputs textual information about a model"""
+    classifier = input_dict['model']
+    output_dict = {}
+    output_dict['model_as_string'] = classifier.printClassifier()
+    return output_dict
+
+def display_classifier(input_dict):
+    """Displays a classifier/model
+    """
+    return {}
+
 
 def export_dataset_to_csv(input_dict):
     """ Exports a dataset to a CSV file """
@@ -205,7 +222,6 @@ def export_dataset_to_csv(input_dict):
 
 def load_UCI_dataset(input_dict):
     """ Loads a UCI dataset """
-
     dataset = ut.load_UCI_dataset(input_dict['dsIn'])
 
     output_dict = {}
@@ -219,12 +235,13 @@ def display_decision_tree(input_dict):
     """ Displays a decision tree """
     from sklearn import tree
     from StringIO import StringIO
+    classifier = input_dict['classifier'].classifier
     out = StringIO()
-    out = tree.export_graphviz(input_dict['classifier'], out_file=out)
+    out = tree.export_graphviz(classifier, out_file=out)
     import StringIO
     from os import system
 
-    tree.export_graphviz(input_dict['classifier'], out_file="decisionTreeJ48-scikit.dot") #dotfile)
+    tree.export_graphviz(classifier, out_file="decisionTreeJ48-scikit.dot") #dotfile)
     #TODO Is directory OK ?
     system("dot -Tpng decisionTreeJ48-scikit.dot -o workflows/static/decision_tree.png") #CORRECT SO THAT IMAGE IS GOING TO BE SAVED IN THE CORRECT DIRECTORY
     return {}
@@ -261,7 +278,7 @@ def import_dataset_from_csv(input_dict):
     output_dict['dataset'] =  dataset
     return output_dict # returns a touple consiting of n_samples x n_features numpy array X and an array of length n_samples containing the targets y
 
-def split_dataset(input_dict):
+def split_dataset_randomly(input_dict):
     """ Randomly splits a given dataset into a train and test dataset."""
 
     inst = input_dict['data']
@@ -276,17 +293,28 @@ def split_dataset(input_dict):
         random_state=1)
 
     from sklearn.datasets import base as ds
-    a_train = ds.Bunch(data=data_train,
-                 target=target_train,
-                 feature_names=inst.feature_names,
-                 DESCR=inst.DESCR,
-                 target_names=inst.target_names)
+    if inst.has_key('target_names'):
+        a_train = ds.Bunch(data=data_train,
+                     target=target_train,
+                     feature_names=inst.feature_names,
+                     DESCR=inst.DESCR,
+                     target_names=inst.target_names)
 
-    a_test = ds.Bunch(data=data_test,
-                 target=target_test,
-                 feature_names=inst.feature_names,
-                 DESCR=inst.DESCR,
-                 target_names=inst.target_names)
+        a_test = ds.Bunch(data=data_test,
+                     target=target_test,
+                     feature_names=inst.feature_names,
+                     DESCR=inst.DESCR,
+                     target_names=inst.target_names)
+    else:
+        a_train = ds.Bunch(data=data_train,
+                     target=target_train,
+                     feature_names=inst.feature_names,
+                     DESCR=inst.DESCR)
+
+        a_test = ds.Bunch(data=data_test,
+                     target=target_test,
+                     feature_names=inst.feature_names,
+                     DESCR=inst.DESCR)
 
     if inst.has_key("feature_value_names"):
         a_train["feature_value_names"] = inst.feature_value_names

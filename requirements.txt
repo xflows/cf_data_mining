@@ -1,2 +1,5 @@
+cf_base
+numpy
 scikit-learn==0.15.2
 pydot==1.0.28
+

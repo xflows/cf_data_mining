@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from scikit_classifier import ScikitLearnClassifier
 
 __author__ = 'darkoa'
 
@@ -15,11 +16,11 @@ def regression_tree(max_features="auto", max_depth=None):
 
     clf = tree.DecisionTreeRegressor(max_features=max_features, max_depth=max_depth)
 
-    return clf
+    return ScikitLearnClassifier(clf)
 
 
 def lasso_LARS(alpha=1.0):
-    """L1-regularized least squares linear model trained with Least Angle Regression. alpha=constant that multiplies the penalty term, default 1.0
+    """L1-regularized least squares linear classifier trained with Least Angle Regression. alpha=constant that multiplies the penalty term, default 1.0
 
     :param alpha: Constant that multiplies the penalty term.
     :return: a LassoLars object
@@ -28,18 +29,18 @@ def lasso_LARS(alpha=1.0):
     from sklearn.linear_model import LassoLars
     clf = LassoLars(alpha=alpha)
 
-    return clf
+    return ScikitLearnClassifier(clf)
 
 
 def sgd_regressor():
-    """Linear model fitted by minimizing a regularized empirical loss with Stochastic Gradient Descent
+    """Linear classifier fitted by minimizing a regularized empirical loss with Stochastic Gradient Descent
 
     :return: a SGDRegressor object
     """
 
     from sklearn.linear_model import SGDRegressor
     clf = SGDRegressor()
-    return clf
+    return ScikitLearnClassifier(clf)
 
 
 def ard_regression(n_iter=300):
@@ -51,28 +52,28 @@ def ard_regression(n_iter=300):
 
     from sklearn.linear_model import ARDRegression
     clf = ARDRegression(n_iter=n_iter)
-    return clf
+    return ScikitLearnClassifier(clf)
 
 
 def ridge_regression():
-    """ L2-regularized least squares linear model
+    """ L2-regularized least squares linear classifier
 
     :return: a Ridge object
     """
 
     from sklearn.linear_model import Ridge
     clf = Ridge()
-    return clf
+    return ScikitLearnClassifier(clf)
 
 def elastic_net_regression():
-    """L1+L2-regularized least squares linear model trained using Coordinate Descent
+    """L1+L2-regularized least squares linear classifier trained using Coordinate Descent
 
     :return: an ElasticNet object
     """
 
     from sklearn.linear_model import ElasticNet
     clf = ElasticNet()
-    return clf
+    return ScikitLearnClassifier(clf)
 
 
 def svr():
@@ -82,4 +83,4 @@ def svr():
     """
     from sklearn.svm import SVR
     clf = SVR()
-    return clf
+    return ScikitLearnClassifier(clf)

@@ -1,4 +1,18 @@
 from django.shortcuts import render
+from cf_base import helpers
+import numpy as np
+import datetime
+
+def display_classifier(request,input_dict,output_dict,widget):
+    """Displays a classifier/model
+    """
+
+    classifier = input_dict['classifier']
+    output_dict = {}
+    output_dict['model_as_string'] = classifier.printClassifier()
+
+    return render(request, 'visualizations/display_classifier.html',{'widget':widget,'input_dict':input_dict,'output_dict':output_dict})
+
 
 def export_dataset_to_csv(request,input_dict,output_dict,widget):
     """Visualization for exporting dataset to CSV file and download of the file
@@ -9,18 +23,16 @@ def export_dataset_to_csv(request,input_dict,output_dict,widget):
     :param widget:
     :return:
     """
-    from cf_base import helpers
-    import numpy
 
     output_dict={}
     dataset= input_dict['dataset']
 
     csv=[]
     for i,sample in enumerate(dataset.data):
-        csv.append(numpy.append(sample,dataset.target[i])) #join n_sample and n_feature array
+        csv.append(np.append(sample,dataset.target[i])) #join n_sample and n_feature array
 
     destination = helpers.get_media_root()+'/'+str(request.user.id)+'/'+str(widget.id)+'.csv'
-    numpy.savetxt(destination, csv, delimiter=",")
+    np.savetxt(destination, csv, delimiter=",")
 
     filename = str(request.user.id)+'/'+str(widget.id)+'.csv'
     output_dict['filename'] = filename
@@ -51,7 +63,7 @@ def helper_display_dataset(bunch):
     target = bunch["target"]
 
     # join data in the right format
-    import numpy as np
+
     csv=[]
     # row=0
     # for sample in data:
@@ -77,7 +89,7 @@ def helper_display_dataset(bunch):
                 csv[i].append( data[i][j] )
 
     # Target:
-    if len(bunch.target_names)>0:
+    if bunch.has_key('target_names') and len(bunch.target_names)>0:
         for i in range(0,nrows):
             if np.isnan(target[i]):
                 csv[i].append( np.nan )
@@ -129,7 +141,7 @@ def display_decision_tree(request,input_dict,output_dict,widget):
 
     png_file = 'decision_tree.png'
 
-    import datetime
+
     my_dict = {'pngfile':png_file, 'param':str( datetime.datetime.now().time() )} # param: used to force reload of image
 
     return render(request, 'visualizations/display_decision_tree.html',{'widget':widget,'input_dict':input_dict,'output_dict':my_dict })

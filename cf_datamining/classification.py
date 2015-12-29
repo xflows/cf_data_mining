@@ -1,16 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from scikit_classifier import ScikitLearnClassifier
 
 __author__ = 'darkoa'
 
 def naive_bayes():
     """Naive Bayes algorithm for classification
 
-    :return: a GaussianNB object.
+    :return: a ScikitLearner object, containing a GaussianNB learner
     """
     from sklearn.naive_bayes import GaussianNB
-    y_pred = GaussianNB()
-    return y_pred
+    gaussianNBLearner = GaussianNB()
+
+    # return gaussianNBLearner
+    return ScikitLearnClassifier(gaussianNBLearner)
 
 
 def SVC(penaltyIn=1.0, kernelIn="rbf", degIn=3):
@@ -25,7 +28,7 @@ def SVC(penaltyIn=1.0, kernelIn="rbf", degIn=3):
     from sklearn.svm import SVC
     # clf = SVC(C=float(input_dict["penaltyIn"]), kernel=str(input_dict["kernelIn"]), degree=int(input_dict["degIn"]))
     clf = SVC(C=float(penaltyIn), kernel=str(kernelIn), degree=int(degIn))
-    return clf
+    return ScikitLearnClassifier(clf)
 
 
 def k_nearest_neighbors(numNeighbIn=5, weithgsIn='uniform', algIn='auto'):
@@ -39,7 +42,7 @@ def k_nearest_neighbors(numNeighbIn=5, weithgsIn='uniform', algIn='auto'):
 
     from sklearn.neighbors import KNeighborsClassifier
     knn = KNeighborsClassifier(n_neighbors=int(numNeighbIn), weights=str(weithgsIn), algorithm=str(algIn))
-    return knn
+    return ScikitLearnClassifier(knn)
 
 
 def logistic_regression(penaltyIn="l1", cIn=1.0):
@@ -51,7 +54,7 @@ def logistic_regression(penaltyIn="l1", cIn=1.0):
     """
     from sklearn.linear_model import LogisticRegression
     clf = LogisticRegression(penalty=str(penaltyIn), C=float(cIn))
-    return clf
+    return ScikitLearnClassifier(clf)
 
 
 def linear_SVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr"):
@@ -66,7 +69,7 @@ def linear_SVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr"):
     from sklearn.svm import LinearSVC
     clf = LinearSVC(C=float(cIn),loss=str(lossIn), penalty=str(penaltyIn), multi_class=str(multiClassIn), dual=True )
 
-    return clf
+    return ScikitLearnClassifier(clf)
 
 
 def J48(maxFeaturesIn="auto", depthIn=None):
@@ -80,4 +83,4 @@ def J48(maxFeaturesIn="auto", depthIn=None):
     from sklearn import tree
     clf = tree.DecisionTreeClassifier(max_features=maxFeaturesIn, max_depth=depthIn)
 
-    return clf
+    return ScikitLearnClassifier(clf)

@@ -1,23 +1,22 @@
 __author__ = 'darkoa'
 
-def buildClassifier(learner, data):
+def buildClassifier(classifier, data):
     '''Builds a classifier
 
-    :param learner: the learner provided
+    :param classifier: a Classifier object
     :param data: a SciKit dataset structure
-    :return: a classifier
     '''
 
-    # learner = input_dict['learner']
-    # data = input_dict['instances']
-    n_sample = data["data"]
-    n_feature = data["target"]
-    # print " --" + str(n_sample)
-    # print "---" + str(n_feature)
+    # generic, for all DataMining libraries
+    # -------------------------------------------
+    classifier.buildClassifier(data)
 
-    classifier = learner.fit(n_sample, n_feature) #.predict(n_sample)
+    # specific, only for Scikit DataMining library
+    # -------------------------------------------
+    # n_sample = data["data"]
+    # n_feature = data["target"]
+    # classifier = classifier.fit(n_sample, n_feature) #.predict(n_sample)
 
-    return classifier
 
 
 def applyClassifier(classifier, data):
@@ -25,14 +24,18 @@ def applyClassifier(classifier, data):
 
     :param classifier: a classifier
     :param data: a SciKit dataset
-    :return: the input data containing a key targetPredicted with the model predictions
+    :return: the input data containing a key targetPredicted with the classifier predictions
     '''
 
-    data["targetPredicted"] = classifier.predict(data["data"])
+    # generic, for all DataMining libraries
+    # -------------------------------------------
+    newData = classifier.applyClassifier(data)
 
-    return data
+    # specific, only for Scikit DataMining library
+    # -------------------------------------------
+    # data["targetPredicted"] = classifier.predict(data["data"])
 
-
+    return newData
 
 
 def helperExtractTrueValuesAndPredictions(data):
@@ -41,7 +44,7 @@ def helperExtractTrueValuesAndPredictions(data):
     return (y_true, y_pred)
 
 def accuracyScore(data):
-    '''Calculates accuracy of a classification model
+    '''Calculates accuracy of a classification classifier
 
     :param data: a SciKit dataset, containing key targetPredicted
     :return: accuracy, float
@@ -54,7 +57,7 @@ def accuracyScore(data):
 
 
 def mse(data):
-    '''Calculates mean_squared_error (MSE) of a regression model
+    '''Calculates mean_squared_error (MSE) of a regression classifier
 
     :param data: a SciKit dataset, containing key targetPredicted
     :return: MSE, float

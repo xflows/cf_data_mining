@@ -2,7 +2,7 @@ __author__ = 'darkoa'
 
 import unittest
 
-import cf_datamining.classification as c, cf_datamining.regression as r, cf_datamining.unsupervised as u
+import cf_datamining.classification as c, cf_datamining.regression as r
 import cf_datamining.evaluation as ev, cf_datamining.utilities as ut
 
 class Tests_CF_Datamining(unittest.TestCase):
@@ -58,21 +58,19 @@ class Tests_CF_Datamining(unittest.TestCase):
         :return: True if all tests pass
         """
 
+        numEx = 0
         lrn_arr =  self.testClassificationLearners()
         for lrn in lrn_arr:
             try:
-                # lrn = c.linear_SVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr")
-
-                # regressionDataset       = ut.load_UCI_dataset("boston")
                 classificationDataset   = ut.load_UCI_dataset("iris")
 
-                clf = ev.buildClassifier(lrn, classificationDataset)
+                ev.buildClassifier(lrn, classificationDataset)
 
             except Exception, e:
-                clf = None
-                print "Exception: " + e
+                numEx = numEx + 1
+                print "Exception: " + str(e)
 
-            self.assertIsNotNone(clf)
+            self.assertIs(numEx, 0)
 
 
     def testRegressionModels(self):
@@ -80,24 +78,16 @@ class Tests_CF_Datamining(unittest.TestCase):
         :return: True if all tests pass
         """
 
+        numEx = 0
         lrn_arr =  self.testRegressionLearners()
         for lrn in lrn_arr:
             try:
-                # lrn = c.linear_SVC(cIn=1.0, lossIn="l2", penaltyIn="l2", multiClassIn="ovr")
-
                 regressionDataset       = ut.load_UCI_dataset("boston")
-                # classificationDataset   = ut.load_UCI_dataset("iris")
 
-                clf = ev.buildClassifier(lrn, regressionDataset)
+                ev.buildClassifier(lrn, regressionDataset)
 
             except Exception, e:
-                clf = None
-                print "Exception: " + e
+                numEx = numEx + 1
+                print "Exception: " + str(e)
 
-            self.assertIsNotNone(clf)
-
-
-    def test_select_data_post(self):
-        # [u'adviser', u'amdahl', u'apollo', u'basf', u'bti', u'burroughs', u'c.r.d', u'cdc', u'cambex', u'dec', u'dg', u'formation', u'four-phase', u'gould', u'hp', u'harris', u'honeywell', u'ibm', u'ipl', u'magnuson', u'microdata', u'nas', u'ncr', u'nixdorf', u'perkin-elmer', u'prime', u'siemens', u'sperry', u'sratus', u'wang']
-        # [u'adviser', u'amdahl', u'apollo']
-        i=1
+            self.assertIs(numEx, 0)

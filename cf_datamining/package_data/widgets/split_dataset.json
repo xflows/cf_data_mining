@@ -59,7 +59,7 @@
   },
   {
     "fields": {
-      "action": "scikitAlgorithms_split_dataset",
+      "action": "split_dataset_randomly",
       "category": "00d411b2-29b8-4966-8f33-aff8bf0e5244",
       "description": "Randomly splits a given dataset into a train and test dataset.",
       "has_progress_bar": false,
