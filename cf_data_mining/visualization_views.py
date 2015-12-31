@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from cf_base import helpers
+from cf_core import helpers
 import numpy as np
 import datetime
+import dataset
 
 def display_classifier(request,input_dict,output_dict,widget):
     """Displays a classifier/model
@@ -9,7 +10,7 @@ def display_classifier(request,input_dict,output_dict,widget):
 
     classifier = input_dict['classifier']
     output_dict = {}
-    output_dict['model_as_string'] = classifier.printClassifier()
+    output_dict['model_as_string'] = classifier.print_classifier()
 
     return render(request, 'visualizations/display_classifier.html',{'widget':widget,'input_dict':input_dict,'output_dict':output_dict})
 
@@ -62,13 +63,7 @@ def helper_display_dataset(bunch):
     data = bunch["data"]
     target = bunch["target"]
 
-    # join data in the right format
-
     csv=[]
-    # row=0
-    # for sample in data:
-    #     csv.append(numpy.append(sample,target[row])) #join n_sample and n_feature array
-    #     row+=1
 
     nrows, ncols = data.shape
     for i in range(0,nrows):
@@ -76,7 +71,7 @@ def helper_display_dataset(bunch):
 
     # Features:
     for j in range(0,ncols):
-        if bunch.has_key("feature_value_names") and len(bunch.feature_value_names[j])>0:
+        if dataset.is_feature_nominal(bunch, j):
             #nominal feat
             for i in range(0,nrows):
                 if np.isnan(data[i][j]):
@@ -89,7 +84,8 @@ def helper_display_dataset(bunch):
                 csv[i].append( data[i][j] )
 
     # Target:
-    if bunch.has_key('target_names') and len(bunch.target_names)>0:
+    if dataset.is_target_nominal(bunch):
+        #nominal target
         for i in range(0,nrows):
             if np.isnan(target[i]):
                 csv[i].append( np.nan )

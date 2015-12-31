@@ -9,7 +9,7 @@
       "parameter": false, 
       "parameter_type": null, 
       "required": false, 
-      "short_name": "data", 
+      "short_name": "dts",
       "uid": "1f40bcbb-e919-4078-8f11-fc2462bba84b", 
       "variable": "data", 
       "widget": "c527ea0f-336b-4334-8288-bce4e742e043"

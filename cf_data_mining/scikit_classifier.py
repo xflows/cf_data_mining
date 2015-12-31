@@ -1,6 +1,9 @@
-__author__ = 'darkoa'
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+__author__ = 'daleksovski'
 
 from classifier import Classifier
+
 
 class ScikitLearnClassifier(Classifier):
     """
@@ -12,7 +15,7 @@ class ScikitLearnClassifier(Classifier):
         self.learner = learner
         self.classifier = None
 
-    def buildClassifier(self, data):
+    def build_classifier(self, data):
         """Builds a scikit classifier
 
         :param data: bunch
@@ -25,8 +28,7 @@ class ScikitLearnClassifier(Classifier):
 
         self.classifier = self.learner.fit(n_sample, n_feature)
 
-
-    def applyClassifier(self, data):
+    def apply_classifier(self, data):
         """Applies a scikit classifier on a dataset, and gets predictions
 
         :param data: bunch
@@ -35,10 +37,10 @@ class ScikitLearnClassifier(Classifier):
         data["targetPredicted"] = self.classifier.predict(data["data"])
         return data
 
-    def printClassifier(self):
+    def print_classifier(self):
         """Prints the model/classifier
         """
-        if self.classifier==None:
+        if self.classifier is None:
             return "Classifier not built yet."
         else:
             return str( self.classifier )

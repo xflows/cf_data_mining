@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from scikit_classifier import ScikitLearnClassifier
 
-__author__ = 'darkoa'
+__author__ = 'daleksovski'
 
 def regression_tree(max_features="auto", max_depth=None):
     """Decision tree for regression problems
@@ -43,15 +43,15 @@ def sgd_regressor():
     return ScikitLearnClassifier(clf)
 
 
-def ard_regression(n_iter=300):
+def ard_regression(num_iter=300):
     """Bayesian Automated Relevance Determination regression.
 
-    :param n_iter: maximum number of iterations, default 300
+    :param num_iter: maximum number of iterations, default 300
     :return: a ARDRegression object
     """
 
     from sklearn.linear_model import ARDRegression
-    clf = ARDRegression(n_iter=n_iter)
+    clf = ARDRegression(n_iter=num_iter)
     return ScikitLearnClassifier(clf)
 
 

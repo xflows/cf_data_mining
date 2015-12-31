@@ -1,4 +1,4 @@
-__author__ = 'darkoa'
+__author__ = 'daleksovski'
 
 
 def load_UCI_dataset(dsIn):

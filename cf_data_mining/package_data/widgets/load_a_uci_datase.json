@@ -9,7 +9,7 @@
       "parameter": true, 
       "parameter_type": "select", 
       "required": false, 
-      "short_name": "ds", 
+      "short_name": "dts",
       "uid": "b29f0614-1db8-48a4-8645-9f28c5d05f66", 
       "variable": "dsIn", 
       "widget": "b3918a2b-afab-4225-9c17-5665d4c1a898"

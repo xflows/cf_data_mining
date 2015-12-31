@@ -1,4 +1,6 @@
-__author__ = 'darkoa'
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+__author__ = 'daleksovski'
 
 class Classifier(object):
     """
@@ -6,14 +8,14 @@ class Classifier(object):
     Needed if there is a need to use one of the widgets: "Build classifier", "Apply classifier", "Print model", "Cross-validation", etc.
     """
 
-    def buildClassifier(self, data):
+    def build_classifier(self, data):
         """Builds a classifier
 
         :param data: bunch
         """
         raise NotImplementedError
 
-    def applyClassifier(self, data):
+    def apply_classifier(self, data):
         """Applies a classifier on a dataset, and gets predictions
 
         :param data: bunch
@@ -21,7 +23,7 @@ class Classifier(object):
         """
         raise NotImplementedError
 
-    def printClassifier(self):
+    def print_classifier(self):
         """Prints the model/classifier
         """
         raise NotImplementedError
