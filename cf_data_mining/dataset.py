@@ -2,14 +2,16 @@
 # -*- coding: utf-8 -*-
 __author__ = 'daleksovski'
 
-# =====================================
-# dataset = ds.Bunch(data=data,
+# ==========================================================================
+# A dataset in ClowdFlows is a Bunch object (a dot-accessible dictionary),
+#   as used in scikit-learn.
+#
+# dataset = Bunch(data=data,
 #                    target=target,
 #                    feature_names=[],
 #                    DESCR="",
 #                    target_names="")
-# =====================================
-
+# ==========================================================================
 def is_target_nominal(bunch):
     if bunch.has_key('target_names') and len(bunch.target_names)>0:
         #nominal target
