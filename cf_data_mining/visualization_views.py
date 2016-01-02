@@ -96,8 +96,11 @@ def helper_display_dataset(bunch):
         for i in range(0,nrows):
             csv[i].append( target[i] )
 
-    # attrs = ["attribute" for i in range(len(data[0]))] #name of attributes
-    attrs = bunch.feature_names
+    if bunch.has_key("feature_names"):
+        attrs = bunch.feature_names
+    else:
+        attrs = ["attribute"+str(i) for i in range(len(data[0]))] #name of attributes
+
     # attrs.append('class')
     metas = ''
     data_new = csv #fill table with data
