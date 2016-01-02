@@ -26,7 +26,7 @@
       "parameter": false, 
       "parameter_type": null, 
       "required": false, 
-      "short_name": "lea", 
+      "short_name": "lrn",
       "uid": "97bdb348-947c-4564-88b3-07f0f6134307", 
       "variable": "learner", 
       "widget": "23203f72-4f76-4ac9-a3d0-5608fe2cd04c"

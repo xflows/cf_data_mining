@@ -2,7 +2,7 @@
   {
     "model": "workflows.abstractwidget", 
     "fields": {
-      "category": "3c5ac714-84ca-4c93-befb-ce0c16148rgr",
+      "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0",
       "treeview_image": "", 
       "uid": "5ccfa30e-645a-4941-b0d0-1be5da3d9396", 
       "windows_queue": false, 
@@ -28,8 +28,8 @@
     "model": "workflows.abstractinput", 
     "fields": {
       "widget": "5ccfa30e-645a-4941-b0d0-1be5da3d9396", 
-      "name": "Model", 
-      "short_name": "mod", 
+      "name": "Classifier/model",
+      "short_name": "cls",
       "default": "", 
       "description": "", 
       "required": false, 
@@ -45,8 +45,8 @@
     "model": "workflows.abstractoutput", 
     "fields": {
       "widget": "5ccfa30e-645a-4941-b0d0-1be5da3d9396", 
-      "name": "Model as string", 
-      "short_name": "mod", 
+      "name": "Classifier/model as string",
+      "short_name": "str",
       "description": "", 
       "variable": "model_as_string", 
       "order": 1, 
