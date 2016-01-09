@@ -19,7 +19,7 @@ class Classifier(object):
         """Applies a classifier on a dataset, and gets predictions
 
         :param data: bunch
-        :return: bunch with targetPredicted
+        :return: data (bunch) with targetPredicted
         """
         raise NotImplementedError
 
