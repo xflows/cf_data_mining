@@ -187,6 +187,15 @@ def apply_classifier(input_dict):
     return output_dict
 
 
+def classification_statistics(input_dict):
+
+    accuracy, precision, recall, f1, auc, confusion_matrix = e.calculate_classification_statistics(input_dict['dataset'])
+
+    return {'accuracy': accuracy, 'precision': precision, 'recall': recall,
+            'f1': f1, 'auc': auc, 'confusion_matrix': confusion_matrix}
+
+
+
 # ----------------------------
 #   UTILITIES
 # ----------------------------
