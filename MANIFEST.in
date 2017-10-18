@@ -1,0 +1,4 @@
+recursive-include cf_data_mining *
+global-exclude *.pyc
+include LICENSE.md
+include README.md
