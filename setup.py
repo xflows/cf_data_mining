@@ -5,23 +5,25 @@ CLASSIFIERS = [
     'Development Status :: 5 - Production/Stable',
     'Intended Audience :: Developers',
     'Intended Audience :: Science/Research',
-]
+    'Programming Language :: Python',
+    'Programming Language :: Python :: 3',
+ ]
 
 dist = setup(
     name='cf_data_mining',
-    version='0.1',
+    version='0.1.2',
     license='MIT License',
-    description='Package providing basic data mining widgets (based on scikit-learn) for ClowdFlows 2.0',
+    description='Package providing basic data mining widgets (based on scikit-learn) for ClowdFlows >= 2',
     url='https://github.com/xflows/cf_data_mining',
     classifiers=CLASSIFIERS,
     packages=find_packages(),
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'cf_core',
+        # 'cf_core',
         'scipy',
         'numpy',
-        'scikit-learn==0.15.2',
-        'pydot==1.0.2'
+        'scikit-learn',
+        'pydot'
     ]
 )

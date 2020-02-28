@@ -1,11 +1,14 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*- 
+# -*- coding: utf-8 -*-
 __author__ = 'daleksovski'
 
 import numpy as np
-import classification as c, regression as r
-import evaluation as e, utilities as ut
-import dataset
+import arff
+from . import classification as c
+from . import regression as r
+from . import evaluation as e
+from . import utilities as ut
+from . import dataset
 
 # -------------------
 #   CLASSIFICATION
@@ -55,21 +58,30 @@ def support_vector_machines_classification_using_liblinear(input_dict):
 
 
 def decision_tree(input_dict):
-    """ Creates a J48 decision tree classifier """
+    """ Creates a Decision tree classifier """
 
-    # parse input and determine its type
-    try:
-        # return int or float
-        maxFeatures = float(input_dict["max_features_in"]) if '.' in input_dict["max_features_in"] else int(
-                input_dict["max_features_in"])
-    except ValueError:
-        maxFeatures = input_dict["max_features_in"]  # return string
+    criterion = input_dict['criterion']
+    splitter = input_dict['splitter']
+    max_depth = input_dict['max_depth']
+    min_samples_leaf = input_dict['min_samples_leaf']
 
-    clf = c.J48(max_features=maxFeatures, depth=int(input_dict["depth_in"]))
+    max_depth = max_depth.strip()
+    if max_depth == '':
+        max_depth = None
+    else:
+        max_depth = int(max_depth)
 
-    output_dict = {}
-    output_dict['tree_out'] = clf
-    return output_dict
+    min_samples_leaf = min_samples_leaf.strip()
+    if min_samples_leaf == '':
+        min_samples_leaf = 1
+    else:
+        min_samples_leaf = int(min_samples_leaf)
+
+    clf = c.decision_tree(criterion=criterion,
+                          splitter=splitter,
+                          max_depth=max_depth,
+                          min_samples_leaf=min_samples_leaf)
+    return {'tree': clf}
 
 
 # -------------------
@@ -228,22 +240,38 @@ def load_UCI_dataset(input_dict):
 
 
 def display_decision_tree(input_dict):
-    """ Displays a decision tree """
-    from sklearn import tree
-    from StringIO import StringIO
-    classifier = input_dict['classifier'].classifier
-    out = StringIO()
-    out = tree.export_graphviz(classifier, out_file=out)
-    import StringIO
-    from os import system
-
-    tree.export_graphviz(classifier, out_file="decisionTreeJ48-scikit.dot")  # dotfile)
-
-    # CORRECT SO THAT IMAGE IS GOING TO BE SAVED IN THE CORRECT DIRECTORY
-    system("dot -Tpng decisionTreeJ48-scikit.dot -o workflows/static/decision_tree.png")
+    # """ Displays a decision tree """
+    # from sklearn import tree
+    # import tempfile
+    # import subprocess
+    # import os
+    #
+    # from mothra.settings import MEDIA_ROOT
+    # from workflows.helpers import ensure_dir
+    #
+    # dataset = input_dict.get('dataset')
+    # if dataset is not None:
+    #     feature_names = dataset.get('feature_names')
+    #     class_names = dataset.get('target_names')
+    # else:
+    #     feature_names = class_names = None
+    #
+    # with tempfile.NamedTemporaryFile(mode='w', suffix='.dot') as fp:
+    #     tree.export_graphviz(input_dict['classifier'].classifier,
+    #                          out_file=fp.name,
+    #                          feature_names=feature_names,
+    #                          class_names=class_names)
+    #     fp.flush()
+    #     path, fname = os.path.split(fp.name)
+    #     base, ext = os.path.splitext(fname)
+    #     pngfile = os.path.join(MEDIA_ROOT, 'sklearn', base + '.png')
+    #     print(pngfile)
+    #     ensure_dir(pngfile)
+    #     subprocess.Popen(['dot', '-Tpng', '-o', pngfile, fp.name])
+    #
+    # return {'pngfile': pngfile}
 
     return {}
-
 
 def import_dataset_from_csv(input_dict):
     """ Imports CSV file, and creates a Scikit dataset. """
@@ -253,9 +281,7 @@ def import_dataset_from_csv(input_dict):
     # this code converts data from the csv file into scikit learn dataset and returns it as a tuple
     import numpy
 
-    # my_data = numpy.genfromtxt(input_dict['fileIn'], delimiter=',')
-    from StringIO import StringIO
-    my_data = numpy.genfromtxt(StringIO(input_dict['fileIn']), delimiter=',')
+    my_data = numpy.genfromtxt(input_dict['fileIn'], delimiter=',')
 
     num_samples, num_attributes = np.shape(my_data)
     num_targets = 1
@@ -283,43 +309,28 @@ def split_dataset_randomly(input_dict):
 
     inst = input_dict['data']
     test_size = 1 - float(input_dict["p"])
+    seed = int(input_dict['seed'])
+    is_stratified = True if input_dict['strat'] == 'true' else False
 
     # train test split
-    from sklearn.cross_validation import train_test_split
-    data_train, data_test, target_train, target_test = train_test_split(
-            inst['data'],
-            inst['target'],
-            test_size=test_size,
-            random_state=1)
+    from sklearn.model_selection import train_test_split
+    data_train, data_test, target_train, target_test = train_test_split(inst['data'],
+                                                                        inst['target'],
+                                                                        test_size=test_size,
+                                                                        random_state=seed,
+                                                                        stratify=inst['target'] if is_stratified else None)
 
     from sklearn.datasets import base as ds
 
-    if dataset.is_target_nominal(inst):
-        a_train = ds.Bunch(data=data_train,
-                           target=target_train,
-                           feature_names=inst.feature_names,
-                           DESCR=inst.DESCR,
-                           target_names=inst.target_names)
+    a_train = ds.Bunch(data=data_train,
+                       target=target_train,
+                       feature_names=inst.feature_names,
+                       DESCR=inst.DESCR)
 
-        a_test = ds.Bunch(data=data_test,
-                          target=target_test,
-                          feature_names=inst.feature_names,
-                          DESCR=inst.DESCR,
-                          target_names=inst.target_names)
-    else:
-        a_train = ds.Bunch(data=data_train,
-                           target=target_train,
-                           feature_names=inst.feature_names,
-                           DESCR=inst.DESCR)
-
-        a_test = ds.Bunch(data=data_test,
-                          target=target_test,
-                          feature_names=inst.feature_names,
-                          DESCR=inst.DESCR)
-
-    if inst.has_key("feature_value_names"):
-        a_train["feature_value_names"] = inst.feature_value_names
-        a_test["feature_value_names"] = inst.feature_value_names
+    a_test = ds.Bunch(data=data_test,
+                      target=target_test,
+                      feature_names=inst.feature_names,
+                      DESCR=inst.DESCR)
 
     return {'train_data': a_train, 'test_data': a_test}
 
@@ -337,7 +348,7 @@ def select_data_post(postdata, input_dict, output_dict):
 
     conditions = json.loads(str(postdata['conditions'][0]))
 
-    print postdata['conditions'][0]
+    print((postdata['conditions'][0]))
 
     attr_names = data.feature_names
     attr_names.append('class')
@@ -390,3 +401,95 @@ def display_dataset(input_dict):
 
 def display_clustering_table_form(input_dict):
     return {}
+
+
+
+def import_dataset_from_arff(input_dict):
+    if not input_dict['arff_file']:
+        raise ValueError('Input file is required!')
+
+    cindex = input_dict.get('target_index')
+    if isinstance(cindex, str):
+        cindex = cindex.strip()
+        if cindex == '':
+            cindex = None
+        elif str(cindex).lower() == 'last':
+            cindex = -1
+        elif str(cindex).lower() == 'first':
+            cindex = 0
+        else:
+            cindex = int(cindex)
+
+    with open(input_dict['arff_file']) as fp:
+        afd = arff.load(fp)
+
+    # get feature types and names
+    atypes = []
+    feature_names = []
+    for aname, atype in afd['attributes']:
+        feature_names.append(aname)
+        if isinstance(atype, list):
+            atypes.append(np.unicode)
+        else:
+            atype = atype.lower()
+            if atype in ['numeric', 'real', 'float', 'double']:
+                atypes.append(np.float)
+            elif atype in ['date', 'string', 'text']:
+                atypes.append(np.unicode)
+            elif atype in ['integer', 'int']:
+                atypes.append(np.int)
+            else:
+                atypes.append(np.unicode)
+
+    # separate target column if required
+    if cindex is not None:
+        y = []
+        X = []
+        for row in afd['data']:
+            y.append(row[cindex])
+            del(row[cindex])
+            X.append(row)
+        y_type = atypes[cindex]
+        del(feature_names[cindex])
+        del(atypes[cindex])
+    else:
+        X = afd['data']
+        y = None
+
+    # build column arrays and encode discrete features where required
+    from sklearn.preprocessing import OrdinalEncoder
+    X = np.array(X)
+    enc = OrdinalEncoder()
+    data = []
+    for idx in range(0, X.shape[1]):
+        col = np.array(X[:, idx], dtype=atypes[idx])
+        if atypes[idx] in [np.unicode, np.int]:
+            col = col.reshape(-1, 1)  # encoder works on column vectors
+            enc.fit(col)
+            col = enc.transform(col).reshape(-1)
+            data.append(col)
+        elif atypes[idx] in [np.float]:
+            data.append(col)
+        else:
+            raise ValueError('Unsupported type {}'.format(str(atypes[idx])))
+    X = np.array(data).T
+
+    # encode discrete target
+    if cindex is not None:
+        if y_type in [np.unicode, np.int]:
+            from sklearn import preprocessing
+            le = preprocessing.LabelEncoder()
+            le.fit(y)
+            y = le.transform(y)
+            target_names = le.classes_
+        else:
+            target_names = None
+    else:
+        target_names = None
+
+    from sklearn.datasets import base as ds
+    dataset = ds.Bunch(data=X,
+                       target=y,
+                       feature_names=feature_names,
+                       target_names=target_names)
+    return {'dataset': dataset}

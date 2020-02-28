@@ -1,0 +1,57 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "ARD Regression",
+      "action": "ard_regression",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Bayesian Automated Relevance Determination regression",
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "scikit_ARD.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "e733abdb-9109-4f0e-88e3-23beecb3d330",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "n_iter",
+      "short_name": "par",
+      "description": "Maximum number of iterations",
+      "variable": "n_iter",
+      "widget": "e733abdb-9109-4f0e-88e3-23beecb3d330",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "300",
+      "parameter_type": "text",
+      "order": 1,
+      "uid": "3d658af4-f2c7-4e6c-b8a8-44be1e73a6bf"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Learner",
+      "short_name": "lrn",
+      "description": "",
+      "variable": "out",
+      "widget": "e733abdb-9109-4f0e-88e3-23beecb3d330",
+      "order": 1,
+      "uid": "3f8f387d-fbf7-4cbc-b469-a23b21c1ad7f"
+    }
+  }
+]

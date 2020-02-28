@@ -1,0 +1,57 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Select Data",
+      "action": "select_data",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "This widget allows the user to select a subset of the data from the input data set based on the condition defined over a set of data\u2019s attributes. Data instances that match the selection rule are placed on the output channel.",
+      "category": "00d411b2-29b8-4966-8f33-aff8bf0e5244",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": true,
+      "interaction_view": "select_data",
+      "post_interact_action": "select_data_post",
+      "image": "",
+      "treeview_image": "treeview/SelectData.png",
+      "static_image": "SelectData.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "2039c5fe-48a1-426c-b418-f0a16fdf1b18",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Data",
+      "short_name": "dts",
+      "description": "Attribute-valued data set.",
+      "variable": "data",
+      "widget": "2039c5fe-48a1-426c-b418-f0a16fdf1b18",
+      "required": false,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 1,
+      "uid": "042b574e-c08a-43ad-87db-9030a8a74cb8"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Matching Data",
+      "short_name": "dts",
+      "description": "Attribute-valued data set composed from instances from input data set that match user-defined condition.",
+      "variable": "data",
+      "widget": "2039c5fe-48a1-426c-b418-f0a16fdf1b18",
+      "order": 1,
+      "uid": "93e88b7e-048a-412d-b93f-552659e62ecb"
+    }
+  }
+]

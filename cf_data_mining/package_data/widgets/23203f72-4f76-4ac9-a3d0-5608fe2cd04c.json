@@ -1,0 +1,74 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Build model",
+      "action": "build_classifier",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Trains a sklearn model",
+      "category": "5888aa38-270f-423b-8d5f-e08f23c1a3b9",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "scikit_buildClassifier.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "23203f72-4f76-4ac9-a3d0-5608fe2cd04c",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Instances",
+      "short_name": "dts",
+      "description": "A sklearn dataset used to train the learner",
+      "variable": "instances",
+      "widget": "23203f72-4f76-4ac9-a3d0-5608fe2cd04c",
+      "required": true,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 2,
+      "uid": "436e18dc-5bab-4a74-8cce-0b31b81b2bbd"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Learner",
+      "short_name": "lrn",
+      "description": "A sklearn learner\r\n\r\nProvided by:\r\na Weka Classification widget",
+      "variable": "learner",
+      "widget": "23203f72-4f76-4ac9-a3d0-5608fe2cd04c",
+      "required": true,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 1,
+      "uid": "97bdb348-947c-4564-88b3-07f0f6134307"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Model",
+      "short_name": "mod",
+      "description": "A sklearn model trained on input data",
+      "variable": "classifier",
+      "widget": "23203f72-4f76-4ac9-a3d0-5608fe2cd04c",
+      "order": 1,
+      "uid": "21f0bf7d-7415-4c4e-b68f-053155c015c2"
+    }
+  }
+]

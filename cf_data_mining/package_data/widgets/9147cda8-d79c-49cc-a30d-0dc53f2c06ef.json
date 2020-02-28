@@ -1,0 +1,74 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Import dataset from ARFF",
+      "action": "import_dataset_from_arff",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Builds a sklearn dataset from an ARFF file. Target column can be specified.\r\nNote that categorical features (strings and integers) are encoded using OrdinalEncoder and that discrete targets are encoded using LabelEncoder.",
+      "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "9147cda8-d79c-49cc-a30d-0dc53f2c06ef",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Target column index",
+      "short_name": "idx",
+      "description": "Index of the target column (empty for no target)",
+      "variable": "target_index",
+      "widget": "9147cda8-d79c-49cc-a30d-0dc53f2c06ef",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "last",
+      "parameter_type": "text",
+      "order": 1,
+      "uid": "0806ed3e-4229-4930-86ca-356ee2e61192"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "File",
+      "short_name": "fil",
+      "description": "ARFF file",
+      "variable": "arff_file",
+      "widget": "9147cda8-d79c-49cc-a30d-0dc53f2c06ef",
+      "required": true,
+      "parameter": true,
+      "multi": false,
+      "default": "",
+      "parameter_type": "file",
+      "order": 1,
+      "uid": "8d4a7d4f-538c-40fc-8945-504aaf066b24"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Dataset",
+      "short_name": "dts",
+      "description": "A sklearn dataset",
+      "variable": "dataset",
+      "widget": "9147cda8-d79c-49cc-a30d-0dc53f2c06ef",
+      "order": 1,
+      "uid": "a074d8f3-23c5-4ca2-80b3-ef2fb63c53d4"
+    }
+  }
+]

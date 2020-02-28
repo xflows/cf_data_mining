@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'daleksovski'
 
-from classifier import Classifier
+from . classifier import Classifier
 
 
 class ScikitLearnClassifier(Classifier):
@@ -21,12 +21,9 @@ class ScikitLearnClassifier(Classifier):
         :param data: bunch
         :return:
         """
-        n_sample = data["data"]
-        n_feature = data["target"]
-        # print " --" + str(n_sample)
-        # print "---" + str(n_feature)
-
-        self.classifier = self.learner.fit(n_sample, n_feature)
+        X = data["data"]
+        y = data["target"]
+        self.classifier = self.learner.fit(X, y)
 
     def apply_classifier(self, data):
         """Applies a scikit classifier on a dataset, and gets predictions
@@ -34,7 +31,7 @@ class ScikitLearnClassifier(Classifier):
         :param data: bunch
         :return: bunch with targetPredicted
         """
-        data["targetPredicted"] = self.classifier.predict(data["data"])
+        data['targetPredicted'] = self.classifier.predict(data['data'])
         return data
 
     def print_classifier(self):
@@ -43,4 +40,4 @@ class ScikitLearnClassifier(Classifier):
         if self.classifier is None:
             return "Classifier not built yet."
         else:
-            return str( self.classifier )
+            return str(self.classifier)

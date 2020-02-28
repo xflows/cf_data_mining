@@ -1,4 +1,4 @@
-cf_core
+#cf_core
 numpy
-scikit-learn==0.15.2
-pydot==1.0.2
+scikit-learn
+pydot

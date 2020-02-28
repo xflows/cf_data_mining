@@ -1,0 +1,57 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Mean Squared Error",
+      "action": "regression_mse",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "One of the several alternative measures to be used to evaluate the success of numeric prediction.",
+      "category": "5888aa38-270f-423b-8d5f-e08f23c1a3b9",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "MSE.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "c527ea0f-336b-4334-8288-bce4e742e043",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Evaluation Results",
+      "short_name": "dts",
+      "description": "A sklearn dataset",
+      "variable": "data",
+      "widget": "c527ea0f-336b-4334-8288-bce4e742e043",
+      "required": true,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 1,
+      "uid": "1f40bcbb-e919-4078-8f11-fc2462bba84b"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Mean Squared Error",
+      "short_name": "mse",
+      "description": "",
+      "variable": "mse",
+      "widget": "c527ea0f-336b-4334-8288-bce4e742e043",
+      "order": 1,
+      "uid": "b5a01b55-2f97-4401-8183-6f774b7f18cc"
+    }
+  }
+]

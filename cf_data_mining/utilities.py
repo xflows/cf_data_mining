@@ -9,6 +9,12 @@ def load_UCI_dataset(dsIn):
     '''
 
     from sklearn import datasets
-    allDSets = {"iris":datasets.load_iris(), "boston":datasets.load_boston(), "diabetes":datasets.load_diabetes(), " linnerud":datasets.load_linnerud()}
-    dataset = allDSets[dsIn]
+    allDSets = {"iris": datasets.load_iris,
+                "boston": datasets.load_boston,
+                "diabetes": datasets.load_diabetes,
+                "linnerud": datasets.load_linnerud,
+                "wine": datasets.load_wine,
+                "breast cancer": datasets.load_breast_cancer
+                }
+    dataset = allDSets[dsIn]()
     return dataset

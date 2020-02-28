@@ -1,0 +1,57 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Print Classifier",
+      "action": "print_model",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Outputs textual information about a classifier/model",
+      "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "printModel.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "5ccfa30e-645a-4941-b0d0-1be5da3d9396",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Classifier/model",
+      "short_name": "cls",
+      "description": "",
+      "variable": "model",
+      "widget": "5ccfa30e-645a-4941-b0d0-1be5da3d9396",
+      "required": false,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 1,
+      "uid": "905fad1a-da41-4671-a577-bda015678dc5"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Classifier/model as string",
+      "short_name": "str",
+      "description": "",
+      "variable": "model_as_string",
+      "widget": "5ccfa30e-645a-4941-b0d0-1be5da3d9396",
+      "order": 1,
+      "uid": "f252cc73-ce65-4fb9-a1a7-e12fb1a8f3f8"
+    }
+  }
+]

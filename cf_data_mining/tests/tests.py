@@ -25,9 +25,9 @@ class TestCFDataMining(unittest.TestCase):
             lrn.append(c.naive_bayes())
             lrn.append(c.SVC())
 
-        except Exception, e:
+        except Exception as e:
             num_exceptions += 1
-            print "Exception: " + str(e)
+            print("Exception: " + str(e))
 
         self.assertIs(num_exceptions, 0)
         return lrn
@@ -48,9 +48,9 @@ class TestCFDataMining(unittest.TestCase):
             # lrn.append( r.lasso_LARS() ) # complains about data scaling ?
             # lrn.append( r.sgd_regressor() )# complains about data scaling ?
 
-        except Exception, e:
+        except Exception as e:
             num_exceptions += 1
-            print "Exception: " + str(e)
+            print("Exception: " + str(e))
 
         self.assertIs(num_exceptions, 0)
         return lrn
@@ -68,9 +68,9 @@ class TestCFDataMining(unittest.TestCase):
 
                 ev.build_classifier(lrn, classification_dataset)
 
-            except Exception, e:
+            except Exception as e:
                 num_exceptions += 1
-                print "Exception: " + str(e)
+                print("Exception: " + str(e))
 
         self.assertIs(num_exceptions, 0)
 
@@ -85,8 +85,8 @@ class TestCFDataMining(unittest.TestCase):
 
                 ev.build_classifier(lrn, regression_dataset)
 
-            except Exception, e:
+            except Exception as e:
                 num_exceptions += 1
-                print "Exception: " + str(e)
+                print("Exception: " + str(e))
 
         self.assertIs(num_exceptions, 0)

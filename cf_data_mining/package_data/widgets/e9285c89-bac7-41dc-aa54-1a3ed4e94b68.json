@@ -1,0 +1,40 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Support Vector Regression",
+      "action": "support_vector_regression",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Epsilon-Support Vector Regression, using the RBF kernel. Non-linear regression using Support Vector Machines (wrapper for libsvm)",
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "scikit_svm.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "e9285c89-bac7-41dc-aa54-1a3ed4e94b68",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Learner",
+      "short_name": "lrn",
+      "description": "",
+      "variable": "out",
+      "widget": "e9285c89-bac7-41dc-aa54-1a3ed4e94b68",
+      "order": 1,
+      "uid": "7a0b535f-807c-4d31-843c-545b7dcb6311"
+    }
+  }
+]

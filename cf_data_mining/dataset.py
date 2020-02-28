@@ -12,17 +12,22 @@ __author__ = 'daleksovski'
 #                    DESCR="",
 #                    target_names="")
 # ==========================================================================
-def is_target_nominal(bunch):
-    if bunch.has_key('target_names') and len(bunch.target_names)>0:
-        #nominal target
-        return True
-    else:
-        return False
 
+# these two functions does not work at all! (who wrote this stuff anyway?)
+# remove or find a better way to test, e.g., number of different values of the feature
+
+def is_target_nominal(bunch):
+    return False
+    # if 'target_names' in bunch and len(bunch.target_names)>0:
+    #     #nominal target
+    #     return True
+    # else:
+    #     return False
 
 def is_feature_nominal(bunch, j):
-    if bunch.has_key("feature_value_names") and len(bunch.feature_value_names[j])>0:
-        #nominal feature
-        return True
-    else:
-        return False
+    return False
+    # if "feature_value_names" in bunch and len(bunch.feature_value_names[j])>0:
+    #     #nominal feature
+    #     return True
+    # else:
+    #     return False

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from scikit_classifier import ScikitLearnClassifier
+from . scikit_classifier import ScikitLearnClassifier
 
 __author__ = 'daleksovski'
 
@@ -67,20 +67,26 @@ def linear_SVC(c=1.0, loss="l2", penalty="l2", multi_class="ovr"):
     :return: a LinearSVC object.
     """
     from sklearn.svm import LinearSVC
-    clf = LinearSVC(C=float(c),loss=str(loss), penalty=str(penalty), multi_class=str(multi_class), dual=True )
+    clf = LinearSVC(C=float(c),loss=str(loss), penalty=str(penalty), multi_class=str(multi_class), dual=True)
 
     return ScikitLearnClassifier(clf)
 
 
-def J48(max_features="auto", depth=None):
-    """ Creates a J48 decision tree classifier
+# def J48(max_features="auto", depth=None):
+#     """ Creates a J48 decision tree classifier
+#
+#     :param max_features: The number of features to consider when looking for the best split
+#     :param depth: The maximum depth of the tree
+#     :return: a DecisionTreeClassifier object
+#     """
+#
+#     from sklearn import tree
+#     clf = tree.DecisionTreeClassifier(max_features=max_features, max_depth=depth)
+#
+#     return ScikitLearnClassifier(clf)
 
-    :param max_features: The number of features to consider when looking for the best split
-    :param depth: The maximum depth of the tree
-    :return: a DecisionTreeClassifier object
-    """
 
+def decision_tree(**kwargs):
     from sklearn import tree
-    clf = tree.DecisionTreeClassifier(max_features=max_features, max_depth=depth)
-
-    return ScikitLearnClassifier(clf)
+    tree = tree.DecisionTreeClassifier(**kwargs)
+    return ScikitLearnClassifier(tree)

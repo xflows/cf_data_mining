@@ -1,0 +1,144 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Decision Tree",
+      "action": "decision_tree",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "A decision tree classifier",
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "scikit_Tree-icon.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "2e92b1c1-0d1a-4569-a003-0bb3b9400801",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Max depth",
+      "short_name": "mxd",
+      "description": "The maximum depth of the tree (empty for no limit)",
+      "variable": "max_depth",
+      "widget": "2e92b1c1-0d1a-4569-a003-0bb3b9400801",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "",
+      "parameter_type": "text",
+      "order": 3,
+      "uid": "4f4296db-fc11-4088-b6c9-a09edee20fd1"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Criterion",
+      "short_name": "crt",
+      "description": "The function to measure the quality of a split",
+      "variable": "criterion",
+      "widget": "2e92b1c1-0d1a-4569-a003-0bb3b9400801",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "gini",
+      "parameter_type": "select",
+      "order": 1,
+      "uid": "61d7acc2-72c8-4943-a602-fcbabea6cc0f"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Min samples in leaf",
+      "short_name": "msl",
+      "description": "The minimum number of samples required to be at a leaf node",
+      "variable": "min_samples_leaf",
+      "widget": "2e92b1c1-0d1a-4569-a003-0bb3b9400801",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "1",
+      "parameter_type": "text",
+      "order": 4,
+      "uid": "7c1b4576-f4de-46a0-abf2-6fae006c9f06"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Splitter",
+      "short_name": "spl",
+      "description": "The strategy used to choose the split at each node",
+      "variable": "splitter",
+      "widget": "2e92b1c1-0d1a-4569-a003-0bb3b9400801",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "best",
+      "parameter_type": "select",
+      "order": 2,
+      "uid": "d3fe38b1-f3b2-4364-a30e-dac5a27d3dfa"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Decision tree learner",
+      "short_name": "lrn",
+      "description": "",
+      "variable": "tree",
+      "widget": "2e92b1c1-0d1a-4569-a003-0bb3b9400801",
+      "order": 1,
+      "uid": "c1eedb63-fabc-46c4-b751-7e7072847180"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6cc0f",
+      "name": "Gini",
+      "value": "gini",
+      "uid": ""
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6cc0f",
+      "name": "Entropy",
+      "value": "entropy",
+      "uid": ""
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "d3fe38b1-f3b2-4364-a30e-dac5a27d3dfa",
+      "name": "Best",
+      "value": "best",
+      "uid": ""
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "d3fe38b1-f3b2-4364-a30e-dac5a27d3dfa",
+      "name": "Random",
+      "value": "random",
+      "uid": ""
+    }
+  }
+]

@@ -107,15 +107,14 @@ def calculate_classification_statistics(dataset):
     y_pred = [class_to_int[lbl] for lbl in y_pred]
 
     accuracy = metrics.accuracy_score(y_true, y_pred)
-    precision = metrics.precision_score(y_true, y_pred)
-    recall = metrics.recall_score(y_true, y_pred)
-    f1 = metrics.f1_score(y_true, y_pred)
+    precision = metrics.precision_score(y_true, y_pred, average='micro')
+    recall = metrics.recall_score(y_true, y_pred, average='micro')
+    f1 = metrics.f1_score(y_true, y_pred, average='micro')
     confusion_matrix = metrics.confusion_matrix(y_true, y_pred)
 
-    # AUC is defined only for binary classes
     if len(classes) == 2:
         auc = metrics.auc_score(y_true, y_pred)
     else:
-        auc = 'undefined for multiple classes'
+        auc = 'AUC for multiclass problems requires class probabilities'
 
     return accuracy, precision, recall, f1, auc, confusion_matrix

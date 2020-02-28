@@ -1,14 +1,17 @@
-<div id="widgetvisualization-{{widget.pk}}" width="700" height="500" rel="{{widget.pk}}" class="widgetvisualizationdialog" title="{{widget.name}} results">
+<div id="widgetvisualization-{{widget.pk}}" rel="{{widget.pk}}" class="widgetvisualizationdialog" title="{{widget.name}} results">
 <center>
-<table cellpadding="0" cellspacing="0" border="0" class="display" id="datasetTable{{widget.pk}}">
+<table class="display" id="datasetTable{{widget.pk}}">
 	<!-- header -->
 	<thead>
 		<tr>
 		{% for att in output_dict.attrs %}
 			<th>{{att}}</th>
 		{% endfor %}
-	    {% if output_dict.class_var %}
-			<th>{{output_dict.class_var}} [class]</th>
+	    {% if output_dict.target_var %}
+			<th>[target]</th>
+	    {% endif %}
+		{% if output_dict.target_var_predicted %}
+			<th>[predicted target]</th>
 	    {% endif %}
 		{% for att in output_dict.metas %}
 			<th>{{att}} [meta]</th>
@@ -27,7 +30,7 @@
     </tbody>
 </table>
 </center>
- 
+
 <script type="text/javascript">
 $(function () {
 	$(document).ready(function() {
@@ -39,4 +42,35 @@ $(function () {
 	} );
 });
 </script>
+
+<style>
+  #widgetvisualization-{{widget.pk}} {
+	  max-width: 1000px;
+	  max-height: 500px;
+	  overflow: auto;
+  }
+
+  #datasetTable{{widget.pk}} {
+	   border-collapse: collapse;
+	   padding: 2px;
+	   text-align: left;
+   }
+   #datasetTable{{widget.pk}},
+   #datasetTable{{widget.pk}} th,
+   #datasetTable{{widget.pk}} td {
+	   border: 1px solid grey;
+   }
+   #datasetTable{{widget.pk}} th {
+	   padding: 5px;
+   }
+
+   /* tr:hover {
+	   background-color: #FFDE89;
+   } */
+   #datasetTable{{widget.pk}} tr:nth-child(even) {
+	   background-color: #f2f2f2;
+   }
+
+</style>
+
 </div>

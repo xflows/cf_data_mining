@@ -1,0 +1,92 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Logistic Regression",
+      "action": "logistic_regression",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "penalty : {string} Used to specify the norm used in the penalization.\r\n\u2018l1\u2019 or \u2018l2\u2019\r\n\r\nC : {float} \r\nInverse of regularization strength; must be a positive float. Like in support vector machines, smaller values specify stronger regularization.",
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "scikit_LogisticRegression.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "acd016b6-fd34-42d2-aa2c-25a812af2cf6",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "C",
+      "short_name": "par",
+      "description": "",
+      "variable": "c_in",
+      "widget": "acd016b6-fd34-42d2-aa2c-25a812af2cf6",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "1.0",
+      "parameter_type": "text",
+      "order": 2,
+      "uid": "78a44bbf-4da4-46e1-9be2-e3335b04c74b"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "penalty",
+      "short_name": "par",
+      "description": "",
+      "variable": "pen_in",
+      "widget": "acd016b6-fd34-42d2-aa2c-25a812af2cf6",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "l1",
+      "parameter_type": "select",
+      "order": 1,
+      "uid": "fb0e5723-41b0-4ef3-9fbd-d88c0a987252"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Learner",
+      "short_name": "lrn",
+      "description": "",
+      "variable": "LR_out",
+      "widget": "acd016b6-fd34-42d2-aa2c-25a812af2cf6",
+      "order": 1,
+      "uid": "6aa463be-9fdf-452f-a920-11d7ebd47f2e"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "fb0e5723-41b0-4ef3-9fbd-d88c0a987252",
+      "name": "l2",
+      "value": "l2",
+      "uid": "9eaf2578-db7b-4341-b9b9-8622aa4d8de8"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "fb0e5723-41b0-4ef3-9fbd-d88c0a987252",
+      "name": "l1",
+      "value": "l1",
+      "uid": "f8542745-ec0d-4f8e-bd84-f686628fae30"
+    }
+  }
+]

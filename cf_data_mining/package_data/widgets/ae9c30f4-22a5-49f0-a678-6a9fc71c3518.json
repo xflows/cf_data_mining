@@ -1,0 +1,57 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Import Dataset from a CSV file",
+      "action": "import_dataset_from_csv",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Imports a Dataset From an CSV Textual Format.",
+      "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "SDT-to-CSV.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "ae9c30f4-22a5-49f0-a678-6a9fc71c3518",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "FileIn",
+      "short_name": "fil",
+      "description": "",
+      "variable": "fileIn",
+      "widget": "ae9c30f4-22a5-49f0-a678-6a9fc71c3518",
+      "required": false,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 1,
+      "uid": "60c22566-2703-473d-8575-df5471d25d1d"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Dataset",
+      "short_name": "dts",
+      "description": "",
+      "variable": "dataset",
+      "widget": "ae9c30f4-22a5-49f0-a678-6a9fc71c3518",
+      "order": 1,
+      "uid": "f0fe78a8-00ab-4266-9e2f-aaea3dc6492d"
+    }
+  }
+]

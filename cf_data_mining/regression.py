@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from scikit_classifier import ScikitLearnClassifier
+from . scikit_classifier import ScikitLearnClassifier
 
 __author__ = 'daleksovski'
 

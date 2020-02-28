@@ -1,0 +1,9 @@
+{
+  "model": "workflows.category",
+  "fields": {
+    "name": "Preprocessing",
+    "parent": "3c5ac714-84ca-4c93-befb-ce0c16148rgr",
+    "order": 1,
+    "uid": "00d411b2-29b8-4966-8f33-aff8bf0e5244"
+  }
+}

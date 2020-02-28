@@ -1,0 +1,117 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Classification statistics",
+      "action": "classification_statistics",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Calculates various classification statistics from true and predicted labels. Note that for micro averaging is used where applicable.",
+      "category": "5888aa38-270f-423b-8d5f-e08f23c1a3b9",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "3564589a-1dea-4743-8a56-d04992d569e8",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Dataset with predictions",
+      "short_name": "dts",
+      "description": "A sklearn dataset with predictions",
+      "variable": "dataset",
+      "widget": "3564589a-1dea-4743-8a56-d04992d569e8",
+      "required": true,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 1,
+      "uid": "26c549c6-5ea1-4f1d-91c8-b9ced19f8aff"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "F1",
+      "short_name": "f1",
+      "description": "F1 measure",
+      "variable": "f1",
+      "widget": "3564589a-1dea-4743-8a56-d04992d569e8",
+      "order": 4,
+      "uid": "37cba070-0b06-4e6e-bf03-04895c956467"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Recall",
+      "short_name": "rec",
+      "description": "Recall",
+      "variable": "recall",
+      "widget": "3564589a-1dea-4743-8a56-d04992d569e8",
+      "order": 3,
+      "uid": "3f5e14ad-e8de-44ea-b4a3-a3f395400a28"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Precision",
+      "short_name": "prc",
+      "description": "Precision",
+      "variable": "precision",
+      "widget": "3564589a-1dea-4743-8a56-d04992d569e8",
+      "order": 2,
+      "uid": "529feda2-fbc5-42e9-980f-f8bf82f5d1ef"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Classification accuracy",
+      "short_name": "ca",
+      "description": "Classification accuracy",
+      "variable": "accuracy",
+      "widget": "3564589a-1dea-4743-8a56-d04992d569e8",
+      "order": 1,
+      "uid": "afd2ad97-8fd4-40db-8767-df69824bb0a2"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "AUC",
+      "short_name": "auc",
+      "description": "AUC",
+      "variable": "auc",
+      "widget": "3564589a-1dea-4743-8a56-d04992d569e8",
+      "order": 5,
+      "uid": "bc72c5a9-f057-43a7-8dbe-4e654846f1ae"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Confusion matrix",
+      "short_name": "cm",
+      "description": "Confusion matrix",
+      "variable": "confusion_matrix",
+      "widget": "3564589a-1dea-4743-8a56-d04992d569e8",
+      "order": 6,
+      "uid": "bea68107-f4c2-4aac-ab99-4b466c41b704"
+    }
+  }
+]

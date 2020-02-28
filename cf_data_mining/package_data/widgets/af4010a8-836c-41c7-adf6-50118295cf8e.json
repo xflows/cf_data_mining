@@ -1,0 +1,120 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Split Dataset Randomly",
+      "action": "split_dataset_randomly",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Randomly splits a given dataset into a train and test dataset.",
+      "category": "00d411b2-29b8-4966-8f33-aff8bf0e5244",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "split_dataset.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "af4010a8-836c-41c7-adf6-50118295cf8e",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Stratification",
+      "short_name": "str",
+      "description": "Preserves class distribution when splitting",
+      "variable": "strat",
+      "widget": "af4010a8-836c-41c7-adf6-50118295cf8e",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "true",
+      "parameter_type": "checkbox",
+      "order": 3,
+      "uid": "3ec9d507-648f-446e-b354-9b0195f7e546"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Seed",
+      "short_name": "sed",
+      "description": "Random seed for repeatability",
+      "variable": "seed",
+      "widget": "af4010a8-836c-41c7-adf6-50118295cf8e",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "1",
+      "parameter_type": "text",
+      "order": 4,
+      "uid": "62049f78-dc08-4e9e-abd2-7a353eafa397"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Split factor",
+      "short_name": "p",
+      "description": "A number between 0 and 1 that determines the sizes of the two datasets: train and test.",
+      "variable": "p",
+      "widget": "af4010a8-836c-41c7-adf6-50118295cf8e",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "0.5",
+      "parameter_type": "text",
+      "order": 2,
+      "uid": "6a637f14-7ba4-4c33-90e0-6cc260587260"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Dataset",
+      "short_name": "dts",
+      "description": "A dataset that will be split into two parts",
+      "variable": "data",
+      "widget": "af4010a8-836c-41c7-adf6-50118295cf8e",
+      "required": true,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 1,
+      "uid": "fe354f76-d6ed-4907-9ab6-d8784b3c7620"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Test data",
+      "short_name": "tes",
+      "description": "Test data",
+      "variable": "test_data",
+      "widget": "af4010a8-836c-41c7-adf6-50118295cf8e",
+      "order": 2,
+      "uid": "514abf26-b0d5-4483-9273-6b930bf4eb68"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Train data",
+      "short_name": "tra",
+      "description": "Train data",
+      "variable": "train_data",
+      "widget": "af4010a8-836c-41c7-adf6-50118295cf8e",
+      "order": 1,
+      "uid": "665e0af4-6e6e-4616-8e96-2d8866497a40"
+    }
+  }
+]

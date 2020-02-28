@@ -1,0 +1,45 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Display Classifier",
+      "action": "display_classifier",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Displays the model/classifier in a textual form.",
+      "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0",
+      "visualization_view": "display_classifier",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "treeview/display_classif.png",
+      "static_image": "display_classif.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 3,
+      "uid": "0033b211-05fe-49a2-8de1-d38971e75baa",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Classifier",
+      "short_name": "cls",
+      "description": "The classifier to display.",
+      "variable": "classifier",
+      "widget": "0033b211-05fe-49a2-8de1-d38971e75baa",
+      "required": false,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 0,
+      "uid": "a1ae0a5a-e455-5575-9983-337e98ee5898"
+    }
+  }
+]

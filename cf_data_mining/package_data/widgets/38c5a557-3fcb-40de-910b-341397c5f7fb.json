@@ -1,0 +1,127 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Support Vector Machines Classification",
+      "action": "support_vector_machines_classification",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Support Vector Machines with kernels based on libsvm",
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "scikit_svm.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "38c5a557-3fcb-40de-910b-341397c5f7fb",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Penalty parameter (C)",
+      "short_name": "par",
+      "description": "",
+      "variable": "penalty_in",
+      "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "1.0",
+      "parameter_type": "text",
+      "order": 1,
+      "uid": "83daa60b-af19-4d20-81d9-cdbdb78afd75"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "degree",
+      "short_name": "par",
+      "description": "",
+      "variable": "deg_in",
+      "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "3",
+      "parameter_type": "text",
+      "order": 1,
+      "uid": "8f21f50d-caf6-4bdb-9dd4-0c5e35466cac"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "kernel",
+      "short_name": "par",
+      "description": "",
+      "variable": "kernel_in",
+      "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "rbf",
+      "parameter_type": "select",
+      "order": 1,
+      "uid": "e1d631a9-e85b-4734-a3df-813b638def50"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Learner",
+      "short_name": "lrn",
+      "description": "",
+      "variable": "SVC_out",
+      "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb",
+      "order": 1,
+      "uid": "1900d766-a254-4c3a-9495-51a836f642b6"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "e1d631a9-e85b-4734-a3df-813b638def50",
+      "name": "poly",
+      "value": "poly",
+      "uid": "1a2e2e5e-68e0-4da8-8ba5-10991a198a1c"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "e1d631a9-e85b-4734-a3df-813b638def50",
+      "name": "linear",
+      "value": "linear",
+      "uid": "83eb0b69-b114-4b9b-a539-562203555834"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "e1d631a9-e85b-4734-a3df-813b638def50",
+      "name": "sigmoid",
+      "value": "sigmoid",
+      "uid": "97aa6d96-c845-433b-a899-cb893ff60538"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "e1d631a9-e85b-4734-a3df-813b638def50",
+      "name": "rbf",
+      "value": "rbf",
+      "uid": "d0507071-d708-49eb-b83b-6d515c94bd96"
+    }
+  }
+]

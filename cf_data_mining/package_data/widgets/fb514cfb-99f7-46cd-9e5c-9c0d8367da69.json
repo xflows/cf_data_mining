@@ -1,0 +1,74 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Apply model",
+      "action": "apply_classifier",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Applies a trained sklearn model on a dataset",
+      "category": "5888aa38-270f-423b-8d5f-e08f23c1a3b9",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "scikit_applyClassifier.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "fb514cfb-99f7-46cd-9e5c-9c0d8367da69",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "ScikitDataset",
+      "short_name": "dts",
+      "description": "A sklearn dataset",
+      "variable": "data",
+      "widget": "fb514cfb-99f7-46cd-9e5c-9c0d8367da69",
+      "required": true,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 2,
+      "uid": "2cf65003-ff21-4c06-8783-0473fe66195d"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Model",
+      "short_name": "mod",
+      "description": "A trained sklearn model",
+      "variable": "classifier",
+      "widget": "fb514cfb-99f7-46cd-9e5c-9c0d8367da69",
+      "required": true,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 1,
+      "uid": "6b9238bf-af83-468d-83a7-dd59fc8e8bcd"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Predictions",
+      "short_name": "dts",
+      "description": "A dataset with predictions",
+      "variable": "classes",
+      "widget": "fb514cfb-99f7-46cd-9e5c-9c0d8367da69",
+      "order": 1,
+      "uid": "37abe044-2c32-45ea-a61d-914ca3337680"
+    }
+  }
+]

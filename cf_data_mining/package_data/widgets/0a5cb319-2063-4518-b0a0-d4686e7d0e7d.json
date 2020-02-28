@@ -1,0 +1,40 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Elastic Net Regression",
+      "action": "elastic_net_regression",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "L1+L2-regularized least squares linear model trained using Coordinate Descent",
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "scikit_NET.png",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "0a5cb319-2063-4518-b0a0-d4686e7d0e7d",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Learner",
+      "short_name": "lrn",
+      "description": "",
+      "variable": "out",
+      "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e7d",
+      "order": 1,
+      "uid": "dc4f1e7a-aaf9-45a2-8d00-51ddb3948eb3"
+    }
+  }
+]
