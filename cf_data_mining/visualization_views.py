@@ -181,14 +181,18 @@ def display_decision_tree(request, input_dict, output_dict, widget):
     from mothra.settings import PUBLIC_DIR
     from workflows.helpers import ensure_dir
 
-    # dataset = input_dict.get('dataset')
-    # if dataset is not None:
-    #     feature_names = dataset.get('feature_names')
-    #     class_names = dataset.get('target_names')
-    # else:
-    #     feature_names = class_names = None
+    from workflows.engine import ValueNotSet
 
-    text = tree.export_text(input_dict['classifier'].classifier)
+    dataset = input_dict.get('dataset')
+    if dataset is not None and dataset != ValueNotSet:
+        feature_names = dataset.get('feature_names')
+        class_names = dataset.get('target_names')
+    else:
+        feature_names = class_names = None
+
+    text = tree.export_text(input_dict['classifier'].classifier,
+                            feature_names=list(feature_names),
+                            show_weights=True)
 
     # with tempfile.NamedTemporaryFile(mode='w', suffix='.dot') as fp:
     #     tree.export_graphviz(input_dict['classifier'].classifier,
@@ -202,18 +206,6 @@ def display_decision_tree(request, input_dict, output_dict, widget):
     #     print(pngfile)
     #     ensure_dir(pngfile)
     #     subprocess.Popen(['dot', '-Tpng', '-o', pngfile, fp.name])
-
-    fn = '/tmp/drevo.dot'
-    with open(fn, 'w') as fp:
-        tree.export_graphviz(input_dict['classifier'].classifier,
-                             out_file=fp)
-                             # feature_names=feature_names,
-                             # class_names=class_names)
-    path, fname = os.path.split(fn)
-    base, ext = os.path.splitext(fname)
-    pngfile = os.path.join(PUBLIC_DIR, 'media', 'sklearn', base + '.png')
     # print(pngfile)
-    subprocess.Popen(['dot', '-Tpng', '-o', pngfile, fp.name])
-    output_dict['pngfile'] = os.path.join('sklearn', base + '.png')
     output_dict['treetext'] = text
     return render(request, 'visualizations/display_decision_tree.html', {'widget': widget, 'input_dict': input_dict, 'output_dict': output_dict})

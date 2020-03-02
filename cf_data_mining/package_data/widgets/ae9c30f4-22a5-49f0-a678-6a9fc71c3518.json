@@ -6,7 +6,7 @@
       "action": "import_dataset_from_csv",
       "wsdl": "",
       "wsdl_method": "",
-      "description": "Imports a Dataset From an CSV Textual Format.",
+      "description": "Builds a sklearn dataset from an CSV file. Target column can be specified. Note that categorical features (strings) are encoded using OrdinalEncoder and that discrete targets are encoded using LabelEncoder.",
       "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0",
       "visualization_view": "",
       "streaming_visualization_view": "",
@@ -28,12 +28,29 @@
   {
     "model": "workflows.abstractinput",
     "fields": {
+      "name": "Target column index",
+      "short_name": "idx",
+      "description": "Index of the target column. Empty for no target. 0-indexed.",
+      "variable": "target_index",
+      "widget": "ae9c30f4-22a5-49f0-a678-6a9fc71c3518",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "last",
+      "parameter_type": "text",
+      "order": 1,
+      "uid": "4973571b-bacb-4793-a32d-fed9ca2e728e"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
       "name": "FileIn",
       "short_name": "fil",
       "description": "",
       "variable": "fileIn",
       "widget": "ae9c30f4-22a5-49f0-a678-6a9fc71c3518",
-      "required": false,
+      "required": true,
       "parameter": false,
       "multi": false,
       "default": "",

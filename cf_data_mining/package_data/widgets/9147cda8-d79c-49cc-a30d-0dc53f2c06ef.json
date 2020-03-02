@@ -30,7 +30,7 @@
     "fields": {
       "name": "Target column index",
       "short_name": "idx",
-      "description": "Index of the target column (empty for no target)",
+      "description": "Index of the target column. Empty for no target. 0-indexed.",
       "variable": "target_index",
       "widget": "9147cda8-d79c-49cc-a30d-0dc53f2c06ef",
       "required": false,
@@ -51,10 +51,10 @@
       "variable": "arff_file",
       "widget": "9147cda8-d79c-49cc-a30d-0dc53f2c06ef",
       "required": true,
-      "parameter": true,
+      "parameter": false,
       "multi": false,
       "default": "",
-      "parameter_type": "file",
+      "parameter_type": null,
       "order": 1,
       "uid": "8d4a7d4f-538c-40fc-8945-504aaf066b24"
     }

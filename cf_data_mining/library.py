@@ -99,6 +99,34 @@ def ard_regression(input_dict):
 
 
 def regression_tree(input_dict):
+    """ Creates a Decision tree classifier """
+
+    criterion = input_dict['criterion']
+    splitter = input_dict['splitter']
+    max_depth = input_dict['max_depth']
+    min_samples_leaf = input_dict['min_samples_leaf']
+
+    max_depth = max_depth.strip()
+    if max_depth == '':
+        max_depth = None
+    else:
+        max_depth = int(max_depth)
+
+    min_samples_leaf = min_samples_leaf.strip()
+    if min_samples_leaf == '':
+        min_samples_leaf = 1
+    else:
+        min_samples_leaf = int(min_samples_leaf)
+
+    reg = r.regression_tree(criterion=criterion,
+                            splitter=splitter,
+                            max_depth=max_depth,
+                            min_samples_leaf=min_samples_leaf)
+    return {'tree': reg}
+
+
+
+def regression_treeOLD(input_dict):
     # parse input and determine its type
     try:
         maxFeatures = float(input_dict["maxFeaturesIn"]) if '.' in input_dict["maxFeaturesIn"] else int(
@@ -276,27 +304,82 @@ def display_decision_tree(input_dict):
 def import_dataset_from_csv(input_dict):
     """ Imports CSV file, and creates a Scikit dataset. """
 
-    # the target value must be in the last column of the CSV file
+    cindex = input_dict.get('target_index')
+    if isinstance(cindex, str):
+        cindex = cindex.strip()
+        if cindex == '':
+            cindex = None
+        elif str(cindex).lower() == 'last':
+            cindex = -1
+        elif str(cindex).lower() == 'first':
+            cindex = 0
+        else:
+            cindex = int(cindex)
+
     output_dict = {}
-    # this code converts data from the csv file into scikit learn dataset and returns it as a tuple
-    import numpy
+    import numpy as np
+    import csv
 
-    my_data = numpy.genfromtxt(input_dict['fileIn'], delimiter=',')
+    # data = np.genfromtxt(input_dict['fileIn'], delimiter=',')
 
-    num_samples, num_attributes = np.shape(my_data)
-    num_targets = 1
+    with open(input_dict['fileIn']) as csvfile:
+        sample = csvfile.read(1024)
+        csvfile.seek(0)
+        dialect = csv.Sniffer().sniff(sample)
+        has_header = csv.Sniffer().sniff(sample)
+        reader = csv.reader(csvfile, dialect)
+        rows = [line for line in reader]
 
-    data = np.empty((num_samples, num_attributes - num_targets))
-    target = np.empty((num_samples,))
+    if has_header:
+        feature_names = rows[0]
+        del rows[0]
+    else:
+        feature_names = None
 
-    for i in range(0, num_samples):
-        data[i] = np.asarray(my_data[i][:-1])
-        target[i] = np.asarray(my_data[i][-1])
+    # separate target column if required
+    if cindex is not None:
+        y = []
+        X = []
+        for row in rows:
+            y.append(row[cindex])
+            del(row[cindex])
+            X.append(row)
+        del feature_names[cindex]
+    else:
+        X = rows
+        y = None
+    # X = np.asarray(X, dtype=np.float)
+
+    # build column arrays and encode discrete features where required
+    from sklearn.preprocessing import OrdinalEncoder
+    X = np.array(X)
+    enc = OrdinalEncoder()
+    data = []
+    for idx in range(0, X.shape[1]):
+        try:
+            col = np.array(X[:, idx], dtype=np.float)
+        except ValueError:
+            col = np.array(X[:, idx], dtype=np.unicode)
+            col = col.reshape(-1, 1)  # encoder works on column vectors
+            enc.fit(col)
+            col = enc.transform(col).reshape(-1)
+        data.append(col)
+    X = np.array(data).T
+
+    # encode discrete target
+    if cindex is not None:
+        from sklearn import preprocessing
+        le = preprocessing.LabelEncoder()
+        le.fit(y)
+        y = le.transform(y)
+        target_names = le.classes_
+    else:
+        target_names = None
 
     from sklearn.datasets import base as ds
-    dataset = ds.Bunch(data=data,
-                       target=target,
-                       feature_names=[],
+    dataset = ds.Bunch(data=X,
+                       target=y,
+                       feature_names=feature_names,
                        DESCR="",
                        target_names="")
 
@@ -407,6 +490,7 @@ def display_clustering_table_form(input_dict):
 def import_dataset_from_arff(input_dict):
     if not input_dict['arff_file']:
         raise ValueError('Input file is required!')
+    arff_file = input_dict['arff_file']
 
     cindex = input_dict.get('target_index')
     if isinstance(cindex, str):
@@ -420,7 +504,7 @@ def import_dataset_from_arff(input_dict):
         else:
             cindex = int(cindex)
 
-    with open(input_dict['arff_file']) as fp:
+    with open(arff_file) as fp:
         afd = arff.load(fp)
 
     # get feature types and names

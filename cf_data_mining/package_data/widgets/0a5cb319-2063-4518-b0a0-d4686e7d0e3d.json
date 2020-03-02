@@ -28,16 +28,33 @@
   {
     "model": "workflows.abstractinput",
     "fields": {
-      "name": "max_feature",
-      "short_name": "par",
-      "description": "",
-      "variable": "maxFeaturesIn",
+      "name": "Max depth",
+      "short_name": "mxd",
+      "description": "The maximum depth of the tree (empty for no limit)",
+      "variable": "max_depth",
       "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d",
       "required": false,
       "parameter": true,
       "multi": false,
-      "default": "auto",
+      "default": "",
       "parameter_type": "text",
+      "order": 3,
+      "uid": "16ab467f-8a2b-4fc7-a7e8-f8f2876de876"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Criterion",
+      "short_name": "crt",
+      "description": "The function to measure the quality of a split",
+      "variable": "criterion",
+      "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "mse",
+      "parameter_type": "select",
       "order": 1,
       "uid": "61d7acc2-72c8-4943-a602-fcbabea6320f"
     }
@@ -45,18 +62,35 @@
   {
     "model": "workflows.abstractinput",
     "fields": {
-      "name": "max_depth",
-      "short_name": "par",
-      "description": "",
-      "variable": "depthIn",
+      "name": "Splitter",
+      "short_name": "spl",
+      "description": "The strategy used to choose the split at each node",
+      "variable": "splitter",
       "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d",
       "required": false,
       "parameter": true,
       "multi": false,
-      "default": "100",
-      "parameter_type": "text",
-      "order": 1,
+      "default": "best",
+      "parameter_type": "select",
+      "order": 2,
       "uid": "d3fe38b1-f3b2-4364-a30e-dac5a271bdfa"
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Min samples in leaf",
+      "short_name": "msl",
+      "description": "The minimum number of samples required to be at a leaf node",
+      "variable": "min_samples_leaf",
+      "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "1",
+      "parameter_type": "text",
+      "order": 4,
+      "uid": "daa26f3b-e064-4c5e-a43e-bdd7d6cce93f"
     }
   },
   {
@@ -65,10 +99,55 @@
       "name": "Learner",
       "short_name": "lrn",
       "description": "",
-      "variable": "tree_out",
+      "variable": "tree",
       "widget": "0a5cb319-2063-4518-b0a0-d4686e7d0e3d",
       "order": 1,
       "uid": "dc4f1e7a-aaf9-45a2-8d00-51ddb3948e23"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6320f",
+      "name": "MSE",
+      "value": "mse",
+      "uid": ""
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6320f",
+      "name": "Friedman MSE",
+      "value": "friedman_mse",
+      "uid": ""
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6320f",
+      "name": "MAE",
+      "value": "mae",
+      "uid": ""
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "d3fe38b1-f3b2-4364-a30e-dac5a271bdfa",
+      "name": "best",
+      "value": "best",
+      "uid": ""
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "d3fe38b1-f3b2-4364-a30e-dac5a271bdfa",
+      "name": "random",
+      "value": "random",
+      "uid": ""
     }
   }
 ]

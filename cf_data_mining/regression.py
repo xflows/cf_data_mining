@@ -4,19 +4,11 @@ from . scikit_classifier import ScikitLearnClassifier
 
 __author__ = 'daleksovski'
 
-def regression_tree(max_features="auto", max_depth=None):
-    """Decision tree for regression problems
 
-    :param featureIn: The number of features to consider when looking for the best split: If int, then consider max_features features at each split; If float, then max_features is a percentage and int(max_features * n_features) features are considered at each split
-    :param max_depth: The maximum depth of the tree
-    :return: a DecisionTreeRegressor object
-    """
-
+def regression_tree(**kwargs):
     from sklearn import tree
-
-    clf = tree.DecisionTreeRegressor(max_features=max_features, max_depth=max_depth)
-
-    return ScikitLearnClassifier(clf)
+    tree = tree.DecisionTreeRegressor(**kwargs)
+    return ScikitLearnClassifier(tree)
 
 
 def lasso_LARS(alpha=1.0):
