@@ -111,7 +111,7 @@
       "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6320f",
       "name": "MSE",
       "value": "mse",
-      "uid": ""
+      "uid": "22929f21-9651-44a0-bf24-c15d8f370f4e"
     }
   },
   {
@@ -120,7 +120,7 @@
       "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6320f",
       "name": "Friedman MSE",
       "value": "friedman_mse",
-      "uid": ""
+      "uid": "f014633d-ac52-4984-9288-925eb3d324ec"
     }
   },
   {
@@ -129,7 +129,7 @@
       "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6320f",
       "name": "MAE",
       "value": "mae",
-      "uid": ""
+      "uid": "08bd8deb-7a16-4b5d-9ae9-0b10768a73af"
     }
   },
   {
@@ -138,7 +138,7 @@
       "abstract_input": "d3fe38b1-f3b2-4364-a30e-dac5a271bdfa",
       "name": "best",
       "value": "best",
-      "uid": ""
+      "uid": "4c26fb35-c3be-4270-b528-41227bf3133f"
     }
   },
   {
@@ -147,7 +147,7 @@
       "abstract_input": "d3fe38b1-f3b2-4364-a30e-dac5a271bdfa",
       "name": "random",
       "value": "random",
-      "uid": ""
+      "uid": "9ef1e321-fdd9-4abc-8834-2a513534100d"
     }
   }
 ]
