@@ -191,7 +191,7 @@ def display_decision_tree(request, input_dict, output_dict, widget):
         feature_names = class_names = None
 
     text = tree.export_text(input_dict['classifier'].classifier,
-                            feature_names=list(feature_names),
+                            feature_names=list(feature_names) if feature_names else None,
                             show_weights=True)
 
     # with tempfile.NamedTemporaryFile(mode='w', suffix='.dot') as fp:

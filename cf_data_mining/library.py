@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 __author__ = 'daleksovski'
 
+import os
 import numpy as np
 import arff
 from . import classification as c
@@ -490,7 +491,6 @@ def display_clustering_table_form(input_dict):
 def import_dataset_from_arff(input_dict):
     if not input_dict['arff_file']:
         raise ValueError('Input file is required!')
-    arff_file = input_dict['arff_file']
 
     cindex = input_dict.get('target_index')
     if isinstance(cindex, str):
@@ -504,8 +504,14 @@ def import_dataset_from_arff(input_dict):
         else:
             cindex = int(cindex)
 
-    with open(arff_file) as fp:
-        afd = arff.load(fp)
+    arff_file = input_dict['arff_file']
+    # if arff file
+    if len(arff_file) <= 300 and os.path.exists(arff_file):
+        with open(arff_file) as fp:
+            afd = arff.load(fp)
+    else:
+        # arff string
+        afd = arff.loads(arff_file)
 
     # get feature types and names
     atypes = []

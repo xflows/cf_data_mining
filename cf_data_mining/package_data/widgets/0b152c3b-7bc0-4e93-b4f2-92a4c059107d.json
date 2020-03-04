@@ -2,11 +2,11 @@
   {
     "model": "workflows.abstractwidget",
     "fields": {
-      "name": "Display Decision Tree",
+      "name": "Display Tree model",
       "action": "display_decision_tree",
       "wsdl": "",
       "wsdl_method": "",
-      "description": "",
+      "description": "Simple visualization of a classification or regression tree model",
       "category": "ef06ed94-c57a-4bb0-8f05-1212920c95a0",
       "visualization_view": "display_decision_tree",
       "streaming_visualization_view": "",

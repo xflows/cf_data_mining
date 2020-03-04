@@ -47,7 +47,7 @@
     "fields": {
       "name": "File",
       "short_name": "fil",
-      "description": "ARFF file",
+      "description": "ARFF file or string",
       "variable": "arff_file",
       "widget": "9147cda8-d79c-49cc-a30d-0dc53f2c06ef",
       "required": true,
