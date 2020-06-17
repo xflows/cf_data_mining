@@ -28,10 +28,10 @@
   {
     "model": "workflows.abstractinput",
     "fields": {
-      "name": "Penalty parameter (C)",
+      "name": "Regularization (C)",
       "short_name": "par",
-      "description": "",
-      "variable": "penalty_in",
+      "description": "Regularization parameter. The strength of the regularization is inversely proportional to C.",
+      "variable": "c_in",
       "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb",
       "required": false,
       "parameter": true,
@@ -39,7 +39,7 @@
       "default": "1.0",
       "parameter_type": "text",
       "order": 1,
-      "uid": "83daa60b-af19-4d20-81d9-cdbdb78afd75"
+      "uid": "3776201e-b878-4ff8-8d4e-e51617ef8570"
     }
   },
   {
@@ -47,7 +47,7 @@
     "fields": {
       "name": "degree",
       "short_name": "par",
-      "description": "",
+      "description": "Degree of the polynomial kernel function (\u2018poly\u2019). Ignored by all other kernels.",
       "variable": "deg_in",
       "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb",
       "required": false,
@@ -64,7 +64,7 @@
     "fields": {
       "name": "kernel",
       "short_name": "par",
-      "description": "",
+      "description": "Specifies the kernel type to be used in the algorithm. It must be one of \u2018linear\u2019, \u2018poly\u2019, \u2018rbf\u2019 or \u2018sigmoid\u2019.",
       "variable": "kernel_in",
       "widget": "38c5a557-3fcb-40de-910b-341397c5f7fb",
       "required": false,

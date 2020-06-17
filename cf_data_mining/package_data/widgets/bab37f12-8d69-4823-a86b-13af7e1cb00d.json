@@ -28,9 +28,9 @@
   {
     "model": "workflows.abstractinput",
     "fields": {
-      "name": "Penalty parameter(C)",
+      "name": "Regularization (C)",
       "short_name": "par",
-      "description": "",
+      "description": "Regularization parameter. The strength of the regularization is inversely proportional to C. Must be strictly positive.",
       "variable": "c_in",
       "widget": "bab37f12-8d69-4823-a86b-13af7e1cb00d",
       "required": false,
@@ -53,7 +53,7 @@
       "required": false,
       "parameter": true,
       "multi": false,
-      "default": "l2",
+      "default": "squared_hinge",
       "parameter_type": "select",
       "order": 2,
       "uid": "4511ba8c-015c-4e26-8ca4-164c74afde18"
@@ -62,7 +62,7 @@
   {
     "model": "workflows.abstractinput",
     "fields": {
-      "name": "Norm(penalty)",
+      "name": "Penalty (norm)",
       "short_name": "par",
       "description": "",
       "variable": "penalty_in",
@@ -118,8 +118,8 @@
     "model": "workflows.abstractoption",
     "fields": {
       "abstract_input": "4511ba8c-015c-4e26-8ca4-164c74afde18",
-      "name": "l2",
-      "value": "l2",
+      "name": "hinge",
+      "value": "hinge",
       "uid": "554b3404-de82-418a-bc9e-f7fa530acde1"
     }
   },
@@ -136,8 +136,8 @@
     "model": "workflows.abstractoption",
     "fields": {
       "abstract_input": "4511ba8c-015c-4e26-8ca4-164c74afde18",
-      "name": "l1",
-      "value": "l1",
+      "name": "squared_hinge",
+      "value": "squared_hinge",
       "uid": "64809f7f-3b98-4b63-9c84-66608c1f6a8c"
     }
   },

@@ -44,7 +44,8 @@ def logistic_regression(input_dict):
 def support_vector_machines_classification(input_dict):
     """Support Vector Machines with kernels based on libsvm"""
     output_dict = {}
-    output_dict['SVC_out'] = c.SVC(input_dict["penalty_in"], input_dict["kernel_in"], input_dict["deg_in"])
+    # output_dict['SVC_out'] = c.SVC(input_dict["penalty_in"], input_dict["kernel_in"], input_dict["deg_in"])
+    output_dict['SVC_out'] = c.SVC(C=input_dict["c_in"], kernel=input_dict["kernel_in"], degree=input_dict["deg_in"])
     return output_dict
 
 
@@ -327,11 +328,17 @@ def import_dataset_from_csv(input_dict):
         sample = csvfile.read(1024)
         csvfile.seek(0)
         dialect = csv.Sniffer().sniff(sample)
-        has_header = csv.Sniffer().sniff(sample)
+        # has_header = csv.Sniffer().sniff(sample)
         reader = csv.reader(csvfile, dialect)
         rows = [line for line in reader]
 
-    if has_header:
+    # if has_header:
+    #     feature_names = rows[0]
+    #     del rows[0]
+    # else:
+    #     feature_names = None
+
+    if input_dict['header']:
         feature_names = rows[0]
         del rows[0]
     else:
@@ -345,7 +352,8 @@ def import_dataset_from_csv(input_dict):
             y.append(row[cindex])
             del(row[cindex])
             X.append(row)
-        del feature_names[cindex]
+        if feature_names:
+            del feature_names[cindex]
     else:
         X = rows
         y = None
@@ -382,7 +390,7 @@ def import_dataset_from_csv(input_dict):
                        target=y,
                        feature_names=feature_names,
                        DESCR="",
-                       target_names="")
+                       target_names=target_names)
 
     output_dict['dataset'] = dataset
     return output_dict
@@ -583,3 +591,12 @@ def import_dataset_from_arff(input_dict):
                        feature_names=feature_names,
                        target_names=target_names)
     return {'dataset': dataset}
+
+
+def label_encoder(input_dict):
+    from sklearn import preprocessing
+    labels = list(input_dict['labels'])
+    le = preprocessing.LabelEncoder()
+    le.fit(labels)
+    y = le.transform(labels)
+    return {'y': y, 'target_names': le.classes_, 'encoder': le}

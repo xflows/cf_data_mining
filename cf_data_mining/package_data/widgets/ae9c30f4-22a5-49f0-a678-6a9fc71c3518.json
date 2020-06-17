@@ -60,6 +60,23 @@
     }
   },
   {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "has header",
+      "short_name": "hdr",
+      "description": "Take first row as a header",
+      "variable": "header",
+      "widget": "ae9c30f4-22a5-49f0-a678-6a9fc71c3518",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "",
+      "parameter_type": "checkbox",
+      "order": 1,
+      "uid": "75f7ccbe-2a8b-44fe-b5b3-dbf28d52dce7"
+    }
+  },
+  {
     "model": "workflows.abstractoutput",
     "fields": {
       "name": "Dataset",

@@ -1,0 +1,81 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Label encoder",
+      "action": "label_encoder",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "Encode target labels with value between 0 and n_classes-1.",
+      "category": "00d411b2-29b8-4966-8f33-aff8bf0e5244",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "401cb6a7-c8c5-4bdd-916f-a336302f2dd5",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Labels",
+      "short_name": "lab",
+      "description": "Labels (iterable of values)",
+      "variable": "labels",
+      "widget": "401cb6a7-c8c5-4bdd-916f-a336302f2dd5",
+      "required": true,
+      "parameter": false,
+      "multi": false,
+      "default": "",
+      "parameter_type": null,
+      "order": 1,
+      "uid": "0bae92ca-80e1-4f88-903d-a3690c018f3f"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Encoder",
+      "short_name": "enc",
+      "description": "Fitted label encoder",
+      "variable": "encoder",
+      "widget": "401cb6a7-c8c5-4bdd-916f-a336302f2dd5",
+      "order": 1,
+      "uid": "70007c5b-6c3d-419e-a611-86f0c14497b6"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Target names",
+      "short_name": "nam",
+      "description": "Names of encoded labels (classes)",
+      "variable": "target_names",
+      "widget": "401cb6a7-c8c5-4bdd-916f-a336302f2dd5",
+      "order": 1,
+      "uid": "a74722ea-2a3f-4238-9a4a-854f4d189468"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Encoded labels",
+      "short_name": "lab",
+      "description": "Encoded labels",
+      "variable": "y",
+      "widget": "401cb6a7-c8c5-4bdd-916f-a336302f2dd5",
+      "order": 1,
+      "uid": "a9d1b244-23ca-4347-a078-5cf6c3c78f02"
+    }
+  }
+]

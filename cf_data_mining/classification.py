@@ -16,7 +16,7 @@ def naive_bayes():
     return ScikitLearnClassifier(gaussian_NB_learner)
 
 
-def SVC(penalty=1.0, kernel="rbf", degree=3):
+def SVC(C=1.0, kernel="rbf", degree=3):
     """Support Vector Machines with kernels based on libsvm
 
     :param penalty: Penalty parameter C of the error term. float
@@ -27,7 +27,7 @@ def SVC(penalty=1.0, kernel="rbf", degree=3):
 
     from sklearn.svm import SVC
     # clf = SVC(C=float(input_dict["penalty"]), kernel=str(input_dict["kernel"]), degree=int(input_dict["degree"]))
-    clf = SVC(C=float(penalty), kernel=str(kernel), degree=int(degree))
+    clf = SVC(C=float(C), kernel=str(kernel), degree=int(degree))
     return ScikitLearnClassifier(clf)
 
 

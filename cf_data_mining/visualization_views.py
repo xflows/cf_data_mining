@@ -111,11 +111,11 @@ def helper_display_dataset(bunch):
         for i in range(0, nrows):
             csv[i].append(targetPredicted[i])
 
-    if "feature_names" in bunch:
+    if bunch.get("feature_names"):
         attrs = bunch.feature_names
     else:
         # name of attributes
-        attrs = ["attribute" + str(i) for i in range(len(data[0]))]
+        attrs = ["f_{}".format(i) for i in range(len(data[0]))]
 
     # attrs.append('class')
     metas = ''

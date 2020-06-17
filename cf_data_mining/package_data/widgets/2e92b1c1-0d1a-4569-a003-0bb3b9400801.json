@@ -109,15 +109,6 @@
     "model": "workflows.abstractoption",
     "fields": {
       "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6cc0f",
-      "name": "Gini",
-      "value": "gini",
-      "uid": "dd0da19d-ae3f-4ca3-84b3-113c25ce8994"
-    }
-  },
-  {
-    "model": "workflows.abstractoption",
-    "fields": {
-      "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6cc0f",
       "name": "Entropy",
       "value": "entropy",
       "uid": "1ccfb251-1d1d-455d-930d-f83088b86da7"
@@ -139,6 +130,15 @@
       "name": "Random",
       "value": "random",
       "uid": "93aae269-fcc4-42c2-af58-df25fb7369a4"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "61d7acc2-72c8-4943-a602-fcbabea6cc0f",
+      "name": "Gini",
+      "value": "gini",
+      "uid": "dd0da19d-ae3f-4ca3-84b3-113c25ce8994"
     }
   }
 ]
