@@ -90,3 +90,9 @@ def decision_tree(**kwargs):
     from sklearn import tree
     tree = tree.DecisionTreeClassifier(**kwargs)
     return ScikitLearnClassifier(tree)
+
+
+def dummy_classifier(strategy):
+    from sklearn.dummy import DummyClassifier
+    dummy = DummyClassifier(strategy)
+    return ScikitLearnClassifier(dummy)

@@ -600,3 +600,8 @@ def label_encoder(input_dict):
     le.fit(labels)
     y = le.transform(labels)
     return {'y': y, 'target_names': le.classes_, 'encoder': le}
+
+
+def dummy_classifier(input_dict):
+    dummy = c.dummy_classifier(input_dict['strategy'])
+    return {'dummy': dummy}

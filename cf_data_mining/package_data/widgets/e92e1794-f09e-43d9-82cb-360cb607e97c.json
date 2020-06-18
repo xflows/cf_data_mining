@@ -1,0 +1,93 @@
+[
+  {
+    "model": "workflows.abstractwidget",
+    "fields": {
+      "name": "Dummy classifier",
+      "action": "dummy_classifier",
+      "wsdl": "",
+      "wsdl_method": "",
+      "description": "DummyClassifier is a classifier that makes predictions using simple rules.",
+      "category": "3c5ac714-84ca-4c93-befb-ce0c16148iii",
+      "visualization_view": "",
+      "streaming_visualization_view": "",
+      "interactive": false,
+      "interaction_view": "",
+      "post_interact_action": "",
+      "image": "",
+      "treeview_image": "",
+      "static_image": "",
+      "has_progress_bar": false,
+      "is_streaming": false,
+      "order": 1,
+      "uid": "e92e1794-f09e-43d9-82cb-360cb607e97c",
+      "package": "cf_data_mining",
+      "always_save_results": false,
+      "windows_queue": false
+    }
+  },
+  {
+    "model": "workflows.abstractinput",
+    "fields": {
+      "name": "Dummy strategy",
+      "short_name": "par",
+      "description": "Dummy strategy to use to generate predictions.",
+      "variable": "strategy",
+      "widget": "e92e1794-f09e-43d9-82cb-360cb607e97c",
+      "required": false,
+      "parameter": true,
+      "multi": false,
+      "default": "most_frequent",
+      "parameter_type": "select",
+      "order": 1,
+      "uid": "b8645219-3223-4248-a3da-e7564d4bafbf"
+    }
+  },
+  {
+    "model": "workflows.abstractoutput",
+    "fields": {
+      "name": "Dummy learner",
+      "short_name": "lrn",
+      "description": "Dummy learner",
+      "variable": "dummy",
+      "widget": "e92e1794-f09e-43d9-82cb-360cb607e97c",
+      "order": 1,
+      "uid": "2cd69b6e-17ed-4a55-b48f-e8f78be77694"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "b8645219-3223-4248-a3da-e7564d4bafbf",
+      "name": "majority",
+      "value": "most_frequent",
+      "uid": "75c4ab6a-a4fd-4860-a603-185a882ce489"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "b8645219-3223-4248-a3da-e7564d4bafbf",
+      "name": "stratified",
+      "value": "stratified",
+      "uid": "86ecd7c6-149a-4729-aa54-6c37651a514d"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "b8645219-3223-4248-a3da-e7564d4bafbf",
+      "name": "prior",
+      "value": "prior",
+      "uid": "8cf8153f-b35d-440d-8434-c2a3ffe98de4"
+    }
+  },
+  {
+    "model": "workflows.abstractoption",
+    "fields": {
+      "abstract_input": "b8645219-3223-4248-a3da-e7564d4bafbf",
+      "name": "uniform",
+      "value": "uniform",
+      "uid": "e690195a-d065-45c0-88b3-aa443ffe957c"
+    }
+  }
+]
