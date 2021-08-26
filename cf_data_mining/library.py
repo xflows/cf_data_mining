@@ -385,7 +385,7 @@ def import_dataset_from_csv(input_dict):
     else:
         target_names = None
 
-    from sklearn.datasets import base as ds
+    import sklearn.utils as ds
     dataset = ds.Bunch(data=X,
                        target=y,
                        feature_names=feature_names,
@@ -412,7 +412,7 @@ def split_dataset_randomly(input_dict):
                                                                         random_state=seed,
                                                                         stratify=inst['target'] if is_stratified else None)
 
-    from sklearn.datasets import base as ds
+    import sklearn.utils as ds
 
     a_train = ds.Bunch(data=data_train,
                        target=target_train,
@@ -585,7 +585,7 @@ def import_dataset_from_arff(input_dict):
     else:
         target_names = None
 
-    from sklearn.datasets import base as ds
+    import sklearn.utils as ds
     dataset = ds.Bunch(data=X,
                        target=y,
                        feature_names=feature_names,
